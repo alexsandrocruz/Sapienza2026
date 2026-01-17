@@ -1,0 +1,45 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PYVOBJECT//NONSGML Version 1//EN
+BEGIN:VTIMEZONE
+TZID:America/Fortaleza
+BEGIN:STANDARD
+DTSTART:20000227T000000
+RRULE:FREQ=YEARLY;BYDAY=4SU;BYMONTH=2;UNTIL=20000227T020000Z
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:STANDARD
+DTSTART:20020217T000000
+RRULE:FREQ=YEARLY;BYDAY=3SU;BYMONTH=2
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20011014T000000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=10;UNTIL=20011014T030000Z
+TZNAME:-02
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0200
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260116T180512Z - 91515@am369a.odoo.com
+DTSTART;TZID=America/Fortaleza:20240909T153000
+DTEND;TZID=America/Fortaleza:20240909T153000
+CREATED:20260116T180512Z
+DESCRIPTION:<a href="https://www.sapienzae.com.br/event/seminario-de-automa
+ cao-de-marketing-com-odoo-2/register">Seminário de Automação de Marketi
+ ng com Odoo</a>\nJunte-se a nós neste evento de 24 horas Todos os anos\, 
+ convidamos nossa comunidade\, parceiros e usuários finais a virem nos con
+ hecer! É o evento ideal para se reunir e apresentar novidades\, roteiros 
+ de versões futuras\, conquistas do software\, workshops\, treinamentos\, 
+ etc. Este evento também é uma oportunidade para apresentar estudos de ca
+ so\, metodologias ou desenvolvimentos de nossos parceiros. Compareça e ve
+ ja diretamente da fonte os recursos da nova versão!
+DTSTAMP:20260116T180512Z
+SUMMARY:Seminário de Automação de Marketing com Odoo
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,14 @@
+
+
+User-agent: *
+Sitemap: https://www.sapienzae.com.br/sitemap.xml
+
+
+##############
+#   custom   #
+##############
+
+
+
+User-agent: *
+Allow: /social_instagram/

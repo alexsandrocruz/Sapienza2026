@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PYVOBJECT//NONSGML Version 1//EN
+BEGIN:VTIMEZONE
+TZID:America/Fortaleza
+BEGIN:STANDARD
+DTSTART:20000227T000000
+RRULE:FREQ=YEARLY;BYDAY=4SU;BYMONTH=2;UNTIL=20000227T020000Z
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:STANDARD
+DTSTART:20020217T000000
+RRULE:FREQ=YEARLY;BYDAY=3SU;BYMONTH=2
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20011014T000000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=10;UNTIL=20011014T030000Z
+TZNAME:-02
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0200
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260116T180509Z - 93382@am369a.odoo.com
+DTSTART;TZID=America/Fortaleza:20241104T153000
+DTEND;TZID=America/Fortaleza:20241104T153000
+CREATED:20260116T180509Z
+DESCRIPTION:<a href="https://www.sapienzae.com.br/event/webinar-de-introduc
+ ao-e-avancos-no-desenvolvimento-com-abp-io-4/register">Webinar de Introdu
+ ção e Avanços no Desenvolvimento com ABP.IO</a>\nJunte-se a nós neste 
+ evento de 24 horas Todos os anos\, convidamos nossa comunidade\, parceiros
+  e usuários finais a virem nos conhecer! É o evento ideal para se reunir
+  e apresentar novidades\, roteiros de versões futuras\, conquistas do sof
+ tware\, workshops\, treinamentos\, etc. Este evento também é uma oportun
+ idade para apresentar estudos de caso\, metodologias ou desenvolvimentos d
+ e nossos parceiros. Compareça e veja diretamente da fonte os recursos da 
+ nova versão!
+DTSTAMP:20260116T180509Z
+SUMMARY:Webinar de Introdução e Avanços no Desenvolvimento com ABP.IO
+END:VEVENT
+END:VCALENDAR

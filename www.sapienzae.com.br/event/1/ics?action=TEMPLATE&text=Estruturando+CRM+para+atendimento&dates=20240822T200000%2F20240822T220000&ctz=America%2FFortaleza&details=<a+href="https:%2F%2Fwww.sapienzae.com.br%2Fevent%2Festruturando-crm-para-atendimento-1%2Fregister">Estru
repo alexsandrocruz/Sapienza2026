@@ -1,0 +1,47 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PYVOBJECT//NONSGML Version 1//EN
+BEGIN:VTIMEZONE
+TZID:America/Fortaleza
+BEGIN:STANDARD
+DTSTART:20000227T000000
+RRULE:FREQ=YEARLY;BYDAY=4SU;BYMONTH=2;UNTIL=20000227T020000Z
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:STANDARD
+DTSTART:20020217T000000
+RRULE:FREQ=YEARLY;BYDAY=3SU;BYMONTH=2
+TZNAME:-03
+TZOFFSETFROM:-0200
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20011014T000000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=10;UNTIL=20011014T030000Z
+TZNAME:-02
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0200
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260116T180513Z - 25279@am369a.odoo.com
+DTSTART;TZID=America/Fortaleza:20240822T200000
+DTEND;TZID=America/Fortaleza:20240822T220000
+CREATED:20260116T180513Z
+DESCRIPTION:<a href="https://www.sapienzae.com.br/event/estruturando-crm-pa
+ ra-atendimento-1/register">Estruturando CRM para atendimento</a>\nJunte-se
+  a nós neste evento de 24 horas Todos os anos\, convidamos nossa comunida
+ de\, parceiros e usuários finais a virem nos conhecer! É o evento ideal 
+ para se reunir e apresentar novidades\, roteiros de versões futuras\, con
+ quistas do software\, workshops\, treinamentos\, etc. Este evento também 
+ é uma oportunidade para apresentar estudos de caso\, metodologias ou dese
+ nvolvimentos de nossos parceiros. Compareça e veja diretamente da fonte o
+ s recursos da nova versão!
+DTSTAMP:20260116T180513Z
+LOCATION:SAPIENZA Inteligência Digital\, Rua Zaqueu Brandão\, 403\, São 
+ José\, Aracaju\, 49010-410\, Brasil
+SUMMARY:Estruturando CRM para atendimento
+END:VEVENT
+END:VCALENDAR
