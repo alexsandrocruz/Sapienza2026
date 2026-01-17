@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HeroWithForm } from '@/components/sections/HeroWithForm';
 import { CTA } from '@/components/sections';
+import { siteConfig } from '@/lib/site-config';
 
 // Dados dos serviços - pode ser movido para um CMS ou arquivo de dados
 const servicesData: Record<string, {
@@ -219,7 +220,7 @@ export default async function ServicePage({
                 title={service.title}
                 subtitle={service.subtitle}
                 description={service.description}
-                formSubject={`Contato - ${service.title}`}
+                formId={siteConfig.dominus.forms.lead}
             />
 
             {/* Features Section */}

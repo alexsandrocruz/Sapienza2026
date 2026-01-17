@@ -41,6 +41,15 @@ export const siteConfig = {
         facebookPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID || '',
     },
 
+    // Dominus ERP Integration
+    dominus: {
+        baseUrl: 'https://dominus.zensuite.com.br',
+        forms: {
+            contact: process.env.NEXT_PUBLIC_DOMINUS_FORM_CONTACT || '32aa7801-d609-499c-b9dc-90a3164e21ae',
+            lead: process.env.NEXT_PUBLIC_DOMINUS_FORM_LEAD || '32aa7801-d609-499c-b9dc-90a3164e21ae',
+        },
+    },
+
     // Author
     author: 'Sapienza Inteligência Digital',
 };
