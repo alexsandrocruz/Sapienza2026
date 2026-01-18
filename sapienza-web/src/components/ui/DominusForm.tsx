@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useId } from 'react';
 import Script from 'next/script';
 
 interface DominusFormProps {
@@ -19,18 +19,23 @@ export function DominusForm({
     className = '',
 }: DominusFormProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const containerId = `dominus-form-${formId.slice(0, 8)}`;
+    const reactId = useId();
+    // Create a unique ID that is valid for HTML id attribute
+    const uniqueId = `dominus-form-${formId.slice(0, 8)}-${reactId.replace(/:/g, '')}`;
 
     useEffect(() => {
         // Tentar renderizar quando o script carregar
         const tryRender = () => {
             const DominusForm = (window as any).DominusForm;
             if (DominusForm && DominusForm[formId] && containerRef.current) {
-                DominusForm[formId].render(containerId, {
-                    theme,
-                    primaryColor,
-                    showDescription,
-                });
+                // Check if container already has content to avoid double rendering
+                if (containerRef.current.innerHTML === '') {
+                    DominusForm[formId].render(uniqueId, {
+                        theme,
+                        primaryColor,
+                        showDescription,
+                    });
+                }
             }
         };
 
@@ -42,7 +47,7 @@ export function DominusForm({
             clearInterval(interval);
             clearTimeout(timeout);
         };
-    }, [formId, theme, primaryColor, showDescription, containerId]);
+    }, [formId, theme, primaryColor, showDescription, uniqueId]);
 
     return (
         <>
@@ -52,7 +57,7 @@ export function DominusForm({
             />
             <div
                 ref={containerRef}
-                id={containerId}
+                id={uniqueId}
                 className={className}
                 data-dominus-form={formId}
                 data-theme={theme}
