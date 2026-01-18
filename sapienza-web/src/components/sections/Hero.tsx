@@ -68,19 +68,19 @@ export function Hero() {
                     {/* Text Content */}
                     <div className="space-y-8 z-10">
                         <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase border border-orange-500/30 px-4 py-2 rounded-full">
-                            Transformação Digital
+                            Desenvolvimento de Software Personalizado
                         </span>
 
-                        <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-                            BUILD A<br />
+                        <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] tracking-tight">
+                            Projetamos, construímos<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                                TIMELESS
+                                e modernizamos
                             </span>
-                            <br />IMPACT
+                            <br />aplicativos de software
                         </h1>
 
                         <p className="text-gray-300 text-lg lg:text-xl max-w-xl leading-relaxed">
-                            Desenvolvemos soluções digitais inovadoras que transformam negócios e criam experiências memoráveis para seus clientes.
+                            Envolva a SAPIENZA para criar uma equipe de desenvolvimento ágil para cocriar ou atualizar seus produtos ou plataformas digitais com as mais recentes tecnologias web, móveis e de nuvem.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-4">

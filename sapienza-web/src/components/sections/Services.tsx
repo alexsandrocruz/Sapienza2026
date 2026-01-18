@@ -1,33 +1,41 @@
+import Link from 'next/link';
+
 const services = [
     {
-        icon: '💻',
-        title: 'Desenvolvimento de Software',
-        description: 'Criamos aplicações web e mobile personalizadas com as tecnologias mais modernas do mercado.',
+        icon: '🎨',
+        title: 'Design de Experiência',
+        description: 'Transforme a experiência do usuário da sua empresa em seu fator X. Nossa filosofia de prioridade às pessoas resulta em produtos que atingem o equilíbrio perfeito entre emoção e função.',
+        href: '/servicos/design-de-experiencia',
     },
     {
-        icon: '💡',
-        title: 'Consultoria Digital',
-        description: 'Orientamos sua empresa na jornada de transformação digital com estratégias eficazes.',
+        icon: '🚀',
+        title: 'Desenvolvimento de Produtos',
+        description: 'Guiamos você por todo o ciclo de vida de desenvolvimento do seu produto, alavancando tecnologia de ponta para fornecer produtos digitais envolventes e satisfatórios.',
+        href: '/servicos/desenvolvimento-de-produtos',
+    },
+    {
+        icon: '📱',
+        title: 'Aplicativos Móveis',
+        description: 'Chame a atenção do seu público no celular com apps iOS e Android que preenchem a lacuna entre você e seus clientes de forma simples, poderosa e elegante.',
+        href: '/servicos/consultoria-apps-mobile',
     },
     {
         icon: '📊',
-        title: 'Business Intelligence',
-        description: 'Transformamos dados em insights valiosos para tomada de decisões estratégicas.',
+        title: 'Análise de Dados',
+        description: 'Analisamos seus dados através de uma lente de design thinking para criar maneiras novas de satisfazer e reter seus clientes, acessando novos níveis de insight.',
+        href: '/servicos/analise-de-dados',
     },
     {
-        icon: '🛡️',
-        title: 'Segurança da Informação',
-        description: 'Protegemos seus dados e sistemas com as melhores práticas de segurança cibernética.',
+        icon: '🔄',
+        title: 'Transformação Digital',
+        description: 'Suas experiências digitais podem crescer junto com o seu negócio. O futuro da sua empresa é tão grande quanto suas ideias, e nós deixamos você livre para evoluir.',
+        href: '/servicos/transformacao-digital',
     },
     {
-        icon: '☁️',
-        title: 'Cloud Computing',
-        description: 'Migramos e gerenciamos sua infraestrutura na nuvem com eficiência e segurança.',
-    },
-    {
-        icon: '🎧',
-        title: 'Suporte Técnico',
-        description: 'Oferecemos suporte contínuo e manutenção para garantir o funcionamento perfeito.',
+        icon: '🛒',
+        title: 'E-commerce',
+        description: 'Eleve sua loja para além de simplesmente ser responsiva. Projete uma plataforma para manter seus clientes engajados e antecipar suas necessidades.',
+        href: '/servicos/desenvolvimento-de-software',
     },
 ];
 
@@ -41,19 +49,21 @@ export function Services() {
                         Nossos Serviços
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-                        Soluções Completas para seu <span className="text-orange-500">Negócio</span>
+                        Serviços de Agência de <span className="text-orange-500">Desenvolvimento</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Oferecemos uma gama completa de serviços de tecnologia para impulsionar sua empresa no mundo digital
+                        Na era digital de hoje, os consumidores esperam interações perfeitas com suas marcas favoritas.
+                        Oferecemos uma gama de serviços incluindo desenvolvimento de produtos, plataformas e soluções personalizadas.
                     </p>
                 </div>
 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service) => (
-                        <div
+                        <Link
                             key={service.title}
-                            className="bg-white p-8 rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group cursor-pointer"
+                            href={service.href}
+                            className="bg-white p-8 rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group"
                         >
                             <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-orange-500 text-3xl">
                                 <span className="group-hover:scale-110 transition-transform">
@@ -69,8 +79,18 @@ export function Services() {
                             <div className="mt-6 flex items-center text-orange-500 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-2">
                                 Saiba mais →
                             </div>
-                        </div>
+                        </Link>
                     ))}
+                </div>
+
+                {/* View All */}
+                <div className="text-center mt-12">
+                    <Link
+                        href="/servicos"
+                        className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+                    >
+                        Ver todos os serviços →
+                    </Link>
                 </div>
             </div>
         </section>

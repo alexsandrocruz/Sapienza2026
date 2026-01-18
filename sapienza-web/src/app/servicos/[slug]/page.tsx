@@ -1,170 +1,10 @@
 import { Metadata } from 'next';
-import { HeroWithForm } from '@/components/sections/HeroWithForm';
-import { CTA } from '@/components/sections';
+import Link from 'next/link';
+import Image from 'next/image';
+import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
+import { DominusForm } from '@/components/ui';
+import { CTA, StatsBanner, SDLCTimeline, WorkingModels, SuccessCases } from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
-
-// Dados dos serviços - pode ser movido para um CMS ou arquivo de dados
-const servicesData: Record<string, {
-    title: string;
-    subtitle: string;
-    description: string;
-    badge: string;
-    features: string[];
-    benefits: string[];
-}> = {
-    'desenvolvimento-de-software': {
-        badge: 'Desenvolvimento de Software',
-        title: 'Desenvolvimento de Software Customizado',
-        subtitle: 'Soluções sob medida para seu negócio',
-        description: 'Criamos aplicações web e mobile personalizadas com as tecnologias mais modernas do mercado. Nossa equipe de desenvolvimento de software se destaca na criação de aplicativos web, aplicativos móveis, aplicativos de comércio eletrônico, plataformas de experiência digital e plataformas SaaS.',
-        features: [
-            'Aplicações Web Modernas',
-            'Apps Mobile iOS e Android',
-            'Sistemas de Gestão (ERP)',
-            'Integrações com APIs',
-            'Arquitetura escalável',
-        ],
-        benefits: [
-            'Código limpo e manutenível',
-            'Documentação completa',
-            'Suporte pós-lançamento',
-            'Metodologia ágil',
-        ],
-    },
-    'desenvolvimento-de-produtos': {
-        badge: 'Desenvolvimento de Produtos',
-        title: 'Desenvolvimento de Produtos Digitais',
-        subtitle: 'Do conceito ao lançamento',
-        description: 'A SAPIENZA é uma agência de desenvolvimento de primeira linha que pode guiá-lo por todo o ciclo de vida de desenvolvimento do seu produto. Nosso objetivo é alavancar a tecnologia de ponta para fornecer produtos digitais envolventes e satisfatórios para seus clientes.',
-        features: [
-            'Discovery e Ideação',
-            'Prototipagem rápida',
-            'MVP em semanas',
-            'Testes com usuários',
-            'Iteração contínua',
-        ],
-        benefits: [
-            'Time-to-market reduzido',
-            'Validação antes do investimento',
-            'Foco no usuário final',
-            'Escalabilidade garantida',
-        ],
-    },
-    'desenvolvimento-de-mvp': {
-        badge: 'MVP',
-        title: 'Desenvolvimento de MVP',
-        subtitle: 'Valide sua ideia rapidamente',
-        description: 'Transforme sua ideia em um produto funcional em semanas, não meses. Focamos em criar uma solução robusta e intuitiva que permita testar e validar em um ambiente real, garantindo ajustes precisos e melhorias contínuas com base no feedback dos usuários.',
-        features: [
-            'Entrega em 4-8 semanas',
-            'Funcionalidades essenciais',
-            'Design profissional',
-            'Infraestrutura escalável',
-            'Métricas de validação',
-        ],
-        benefits: [
-            'Investimento inicial reduzido',
-            'Feedback real do mercado',
-            'Base para crescimento',
-            'Atrair investidores',
-        ],
-    },
-    'transformacao-digital': {
-        badge: 'Transformação Digital',
-        title: 'Transformação Digital',
-        subtitle: 'Modernize sua empresa',
-        description: 'Como agência de transformação digital, a SAPIENZA oferece serviços para que suas experiências digitais possam crescer junto com o seu negócio. O futuro da sua empresa é tão grande quanto suas ideias, e nós deixamos você livre para evoluir, modernizar e avançar.',
-        features: [
-            'Análise de processos',
-            'Automação de tarefas',
-            'Migração para cloud',
-            'Integração de sistemas',
-            'Cultura digital',
-        ],
-        benefits: [
-            'Redução de custos operacionais',
-            'Maior eficiência',
-            'Experiência do cliente melhorada',
-            'Competitividade aumentada',
-        ],
-    },
-    'analise-de-dados': {
-        badge: 'Business Intelligence',
-        title: 'Análise de Dados',
-        subtitle: 'Decisões baseadas em dados',
-        description: 'A SAPIENZA pode analisar seus dados através de uma lente de design thinking para criar maneiras novas e aprimoradas de satisfazer e reter seus clientes. Sinta-se capacitado para monitorar as principais métricas da sua empresa e acessar novos níveis de insight.',
-        features: [
-            'Dashboards personalizados',
-            'Relatórios automatizados',
-            'Análise preditiva',
-            'Data Warehouse',
-            'Machine Learning',
-        ],
-        benefits: [
-            'Visibilidade total do negócio',
-            'Decisões mais rápidas',
-            'Identificar oportunidades',
-            'Reduzir riscos',
-        ],
-    },
-    'design-de-experiencia': {
-        badge: 'UX/UI Design',
-        title: 'Design de Experiência do Usuário',
-        subtitle: 'Interfaces que encantam',
-        description: 'Transforme a experiência do usuário da sua empresa em seu fator X com o processo de design de experiência da SAPIENZA. Nossa filosofia de prioridade às pessoas resulta em produtos acabados que atingem o equilíbrio perfeito entre emoção e função.',
-        features: [
-            'Pesquisa com usuários',
-            'Wireframes e protótipos',
-            'Design System',
-            'Testes de usabilidade',
-            'Design responsivo',
-        ],
-        benefits: [
-            'Maior conversão',
-            'Menos suporte',
-            'Clientes satisfeitos',
-            'Marca fortalecida',
-        ],
-    },
-    'consultoria-apps-mobile': {
-        badge: 'Mobile',
-        title: 'Consultoria em Aplicativos Móveis',
-        subtitle: 'Apps iOS e Android de alta performance',
-        description: 'Para sobreviver no mundo dos negócios de hoje, você precisa chamar a atenção do seu público no celular. A SAPIENZA oferece serviços de consultoria e desenvolvimento de aplicativos de primeira classe para fazer exatamente isso.',
-        features: [
-            'Apps nativos e híbridos',
-            'React Native / Flutter',
-            'Integração com hardware',
-            'Push notifications',
-            'Offline-first',
-        ],
-        benefits: [
-            'Presença mobile',
-            'Engajamento do usuário',
-            'Canal direto com cliente',
-            'Novas receitas',
-        ],
-    },
-    'whatsapp-chatbot': {
-        badge: 'Automação',
-        title: 'WhatsApp Chatbot',
-        subtitle: 'Atendimento 24/7 automatizado',
-        description: 'Automatize o atendimento ao cliente com chatbots inteligentes para WhatsApp. Responda perguntas frequentes, qualifique leads e encaminhe para atendentes humanos quando necessário.',
-        features: [
-            'Integração WhatsApp Business API',
-            'Fluxos personalizados',
-            'IA conversacional',
-            'Transferência para humano',
-            'Relatórios de atendimento',
-        ],
-        benefits: [
-            'Atendimento 24 horas',
-            'Redução de custos',
-            'Escala infinita',
-            'Clientes satisfeitos',
-        ],
-    },
-};
 
 // Gerar metadados dinâmicos
 export async function generateMetadata({
@@ -173,7 +13,7 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>
 }): Promise<Metadata> {
     const { slug } = await params;
-    const service = servicesData[slug];
+    const service = getServiceBySlug(slug);
 
     if (!service) {
         return { title: 'Serviço não encontrado' };
@@ -181,17 +21,17 @@ export async function generateMetadata({
 
     return {
         title: service.title,
-        description: service.description,
+        description: service.heroDescription,
         openGraph: {
             title: service.title,
-            description: service.description,
+            description: service.heroDescription,
         },
     };
 }
 
 // Gerar rotas estáticas
 export function generateStaticParams() {
-    return Object.keys(servicesData).map((slug) => ({ slug }));
+    return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
 export default async function ServicePage({
@@ -200,14 +40,17 @@ export default async function ServicePage({
     params: Promise<{ slug: string }>
 }) {
     const { slug } = await params;
-    const service = servicesData[slug];
+    const service = getServiceBySlug(slug);
 
     if (!service) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center pt-20">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Serviço não encontrado</h1>
-                    <p className="text-gray-600">O serviço que você procura não existe.</p>
+                    <p className="text-gray-600 mb-8">O serviço que você procura não existe.</p>
+                    <Link href="/servicos" className="text-orange-500 font-semibold hover:text-orange-600">
+                        ← Ver todos os serviços
+                    </Link>
                 </div>
             </div>
         );
@@ -215,47 +58,119 @@ export default async function ServicePage({
 
     return (
         <>
-            <HeroWithForm
-                badge={service.badge}
-                title={service.title}
-                subtitle={service.subtitle}
-                description={service.description}
-                formId={siteConfig.dominus.forms.lead}
-            />
+            {/* Hero Section */}
+            <section className="relative bg-[#0b0f19] pt-32 pb-20 overflow-hidden">
+                {/* Background elements */}
+                {service.heroImage && (
+                    <div className="absolute inset-0 opacity-20">
+                        <Image
+                            src={service.heroImage}
+                            alt={service.title}
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                )}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px]" />
 
-            {/* Features Section */}
-            <section className="py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Content */}
+                        <div className="space-y-8">
+                            <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase border border-orange-500/30 px-4 py-2 rounded-full bg-orange-500/10">
+                                {service.badge}
+                            </span>
+                            <h1 className="text-4xl lg:text-6xl font-bold text-white leading-[1.1]">
+                                {service.title}
+                            </h1>
+                            <h2 className="text-xl lg:text-2xl font-medium text-orange-400">
+                                {service.subtitle}
+                            </h2>
+                            <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+                                {service.heroDescription}
+                            </p>
+
+                            <div className="flex flex-wrap gap-8 pt-4">
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold text-white">20+</span>
+                                    <span className="text-gray-400 text-sm">Anos de XP</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold text-white">150+</span>
+                                    <span className="text-gray-400 text-sm">Projetos</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold text-white">100%</span>
+                                    <span className="text-gray-400 text-sm">Qualidade</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Form */}
+                        <div className="bg-white rounded-3xl p-8 shadow-2xl relative z-10 border border-white/10">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">
+                                Solicite uma proposta personalizada
+                            </h3>
+                            <DominusForm
+                                formId={siteConfig.dominus.forms.lead}
+                                theme="light"
+                                primaryColor="#ea580c"
+                                showDescription={false}
+                                className="min-h-[300px]"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Stats Banner */}
+            <StatsBanner stats={service.features} />
+
+            {/* SDLC Timeline Section */}
+            {service.sdlcPhases && (
+                <SDLCTimeline phases={service.sdlcPhases} badge={service.badge} />
+            )}
+
+            {/* Working Models Section */}
+            {service.workingModels && (
+                <WorkingModels models={service.workingModels} />
+            )}
+
+            {/* Success Cases Section */}
+            {service.successCases && (
+                <SuccessCases cases={service.successCases} />
+            )}
+
+            {/* Detailed Content Grid (Fallback or Additional) */}
+            <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        {/* Features */}
-                        <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                                O que oferecemos
-                            </h3>
-                            <ul className="space-y-4">
-                                {service.features.map((feature, index) => (
-                                    <li key={index} className="flex items-start gap-3">
-                                        <span className="text-orange-500 text-xl mt-0.5">✓</span>
-                                        <span className="text-gray-700 text-lg">{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {service.sections.map((section, index) => (
+                            <div
+                                key={index}
+                                className="space-y-4"
+                            >
+                                <h3 className="text-xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">{section.title}</h3>
+                                <p className="text-gray-600 leading-relaxed">{section.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* Benefits */}
-                        <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                                Benefícios
-                            </h3>
-                            <ul className="space-y-4">
-                                {service.benefits.map((benefit, index) => (
-                                    <li key={index} className="flex items-start gap-3">
-                                        <span className="text-orange-500 text-xl mt-0.5">★</span>
-                                        <span className="text-gray-700 text-lg">{benefit}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+            {/* Benefits */}
+            <section className="py-24 bg-[#0b0f19]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-white">Benefícios Estratégicos</h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {service.benefits.map((benefit, index) => (
+                            <div key={index} className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+                                <div className="text-orange-500 font-bold mb-4">0{index + 1}</div>
+                                <h3 className="text-white font-bold text-lg">{benefit}</h3>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
