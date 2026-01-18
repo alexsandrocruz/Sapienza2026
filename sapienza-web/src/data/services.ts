@@ -28,6 +28,13 @@ export interface RichSection {
     dark?: boolean;
 }
 
+export interface ServiceHubItem {
+    title: string;
+    description: string;
+    link?: string;
+    icon?: string;
+}
+
 export interface ServiceData {
     slug: string;
     badge: string;
@@ -49,6 +56,11 @@ export interface ServiceData {
     };
     features: string[];
     benefits: string[];
+    servHub?: {
+        title: string;
+        description: string;
+        items: ServiceHubItem[];
+    };
     sdlcPhases?: {
         title: string;
         description: string;
@@ -70,43 +82,69 @@ export interface ServiceData {
 export const servicesData: ServiceData[] = [
     {
         slug: 'desenvolvimento-de-software',
-        badge: 'Desenvolvimento de Software',
+        badge: 'Software Engineering',
         title: 'Desenvolvimento de Software Customizado',
-        subtitle: 'Soluções de software confiáveis e escaláveis para desenvolver seus negócios',
-        heroDescription: 'A SAPIENZA Inteligência Digital é uma empresa de desenvolvimento de software com duas décadas de experiência na criação de soluções de software personalizadas para todos os orçamentos e nichos.',
-        sections: [
+        subtitle: 'Construa para evoluir, não apenas para atingir a paridade',
+        heroDescription: 'A Sapienza é uma parceira estratégica com décadas de experiência na criação de soluções personalizadas que impulsionam o valor do negócio. De arquiteturas modernas a experiências habilitadas por IA, ajudamos sua empresa a tomar decisões baseadas em evidências e garantir a longevidade através de componentes escaláveis.',
+        heroImage: '/images/services/software-dev-hero.png',
+        richSections: [
             {
-                title: 'Crie experiências digitais atraentes',
-                description: 'Nossa empresa de desenvolvimento de software personalizado pode usar suas ideias e pesquisas para entregar o que seu público deseja. A equipe da SAPIENZA é composta por programadores, administradores de servidores e designers de experiência digital com mais de 20 anos de experiência.',
+                title: 'Nossa abordagem focada em resultados de negócio',
+                description: 'Não construímos apenas código; construímos ativos que geram lucro. Nossa metodologia abrange desde o discovery estratégico até a otimização contínua via SRE e monitoramento predictivo.',
+                image: '/images/services/ai-engineering.png',
+                cta: { text: 'Agendar Workshop de Discovery', link: '/contato' }
             },
             {
-                title: 'Equipe de desenvolvimento Full-stack',
-                description: 'Codificação e design para aplicativos Android, iOS, baseados em navegador, multiplataforma e programas customizados. Quaisquer que sejam as suas necessidades de software, nossa equipe pode criar a solução.',
-            },
-            {
-                title: 'Estratégia e Consultoria de Software',
-                description: 'Trabalhamos com analistas de negócios e especialistas em UX para montar produtos que ajudem sua empresa a atingir seus objetivos. Todos os projetos incluem testes de garantia de qualidade (QA).',
-            },
-            {
-                title: 'Desenvolvimento de Produtos Personalizados',
-                description: 'Ajudamos empresas, de startups a scale-ups, a concretizar suas ideias, escolhendo as tecnologias certas e usando uma abordagem rigorosa para projetar soluções orientadas a resultados.',
-            },
+                title: 'Modernização de Sistemas Legados',
+                description: 'Transforme seus sistemas sem paralisar sua operação. Praticamos uma abordagem de "duas velocidades": entrega de valor imediato através de reuso estratégico enquanto transformamos incrementalmente arquiteturas complexas.',
+                reversed: true,
+                image: '/images/services/gen-ai-experience.png'
+            }
         ],
         features: [
-            'Aplicações Web Modernas',
-            'Apps Mobile iOS e Android',
-            'Sistemas de Gestão (ERP/CRM)',
-            'Integrações com APIs',
-            'Arquitetura escalável',
-            'Plataformas SaaS',
+            'Desenvolvimento Customizado End-to-End',
+            'Arquiteturas Cloud-native e Microsserviços',
+            'Desenvolvimento Low-code/No-code Governança',
+            'Segurança e Compliance Nível Enterprise',
+            'Estratégia de Dados e Integração de IA/ML',
+            'Engenharia de Produto Digital Sustentável',
         ],
         benefits: [
-            'Código limpo e manutenível',
-            'Documentação completa',
-            'Suporte pós-lançamento',
-            'Metodologia ágil',
-            '20+ anos de experiência',
-            'Testes de QA inclusos',
+            'Redução drástica de dívida técnica',
+            'Time-to-market acelerado com SDLC moderno',
+            'Escalabilidade infinita via CloudOps',
+            'Decisões de engenharia baseadas em evidências',
+            'Ecosystem thinking para integração total',
+            'Eliminação de silos de comunicação e dados',
+        ],
+        sdlcPhases: [
+            { title: 'Discovery', description: 'Deep-dive workshops para alinhar investimentos técnicos com estratégia de negócio e métricas North Star.', icon: '🔍' },
+            { title: 'Agile Engineering', description: 'Times cross-funcionais criando ciclos de entrega contínua para iterações rápidas baseadas em feedback.', icon: '⚡' },
+            { title: 'Cloud Enablement', description: 'Arquitetura resiliente desde o primeiro commit, com foco em escalabilidade e redução de manutenção.', icon: '☁️' },
+            { title: 'AI Integration', description: 'Aceleração de ciclos através de automação DevOps e engenharia assistida por IA para eliminar tarefas rotineiras.', icon: '🤖' },
+            { title: 'Optimization', description: 'Melhoria contínua com ferramentas APM, práticas SRE e redução proativa de débitos técnicos.', icon: '📈' },
+        ],
+        workingModels: [
+            { title: 'Custom App Development', description: 'Aplicações sob medida para seus fluxos, lógica de negócio e requisitos de usuários.', icon: '🏗️' },
+            { title: 'Cloud-native Apps', description: 'Produtos com bases de código modulares, serviços containerizados e infraestrutura como código.', icon: '🚀' },
+            { title: 'Low-code Solutions', description: 'Aceleração de backlogs em até 4x com plataformas seguras e governadas para usuários de negócio.', icon: '⚡' },
+        ],
+        successCases: [
+            {
+                client: 'Global Telecom Provider',
+                description: 'Overhaul do portfólio OSS/BSS com faturamento em tempo real, analytics contextual e consolidação de chatbots via LLM.',
+                metrics: ['Consolidação de 14 bots em 1 AI Assistant', 'ROI acelerado em serviços 5G', 'Faturamento 100% data-driven'],
+            },
+            {
+                client: 'Retail Home Improvement Leader',
+                description: 'Consultoria digital e engenharia de produto nativo para handicraft industry, focando em revenue streams e UX mobile.',
+                metrics: ['45% menor abandono de carrinho', 'Crescimento para 1.8M assinantes', 'IPO de US$ 1.03 bi de market cap'],
+            },
+            {
+                client: 'National eHealth Ecosystem',
+                description: 'Construção de ecossistema nacional de saúde servindo 30M+ cidadãos, incluindo telemedicina e portal do paciente.',
+                metrics: ['Interação para 30M+ usuários', 'Redução em 40% de erros médicos', '$1M+ economia anual operacional'],
+            },
         ],
     },
     {
@@ -767,6 +805,69 @@ export const servicesData: ServiceData[] = [
             'Agilidade aumentada',
             'Integração facilitada',
             'Talento mais fácil de atrair',
+        ],
+    },
+    {
+        slug: 'desenvolvimento-de-plataformas',
+        badge: 'Platform Engineering',
+        title: 'Desenvolvimento de Plataformas Digitais',
+        subtitle: 'Escale através de orquestração de serviços e arquiteturas digitais end-to-end',
+        heroDescription: 'Plataformas digitais superam empresas focadas apenas em produtos simples. Ajudamos líderes de mercado a lançar novos ecossistemas B2C e escalar ofertas B2B através de uma base tecnológica robusta e escalável, desde o design de arquitetura até a governança integrada.',
+        heroImage: '/images/services/platform-dev-hero.png',
+        richSections: [
+            {
+                title: 'Platform development services — o presente do crescimento digital',
+                description: 'Diferente de produtos tradicionais, o valor de uma plataforma não está preso aos custos de produção. Facilitamos a troca de serviços onde você pode crescer exponencialmente transferindo custos de produção para o ecossistema.',
+                image: '/images/services/platform-growth.png',
+                cta: { text: 'Falar com um Especialista em Plataformas', link: '/contato' }
+            },
+            {
+                title: 'Razões para escolher a Sapienza para sua Plataforma',
+                description: 'Unimos consultoria IaaS/PaaS estratégica a um conhecimento profundo de AI/ML e orquestração DevOps. Nossos designers de UI/UX garantem que sua plataforma não seja apenas potente, mas também irresistível para os usuários.',
+                reversed: true,
+                image: '/images/services/responsible-ai-flow.png'
+            }
+        ],
+        servHub: {
+            title: 'Our platform development services',
+            description: 'De consultoria estratégica a engenharia de dados, cobrimos todas as necessidades para construir o backbone tecnológico da sua empresa.',
+            items: [
+                { title: 'Digital platform engineering', description: 'Design de arquitetura otimizada e implementação end-to-end.', icon: '🏗️' },
+                { title: 'API & system integration', description: 'Troca eficiente de dados e comunicação entre todos os serviços da plataforma.', icon: '🔌' },
+                { title: 'Governance', description: 'Gerenciamento do ecossistema com mecanismos de controle centralizados e visibilidade real.', icon: '⚖️' },
+                { title: 'Maintenance & support', description: 'Aproveite o efeito de rede sem se preocupar com degradação ou downtime.', icon: '🛠️' },
+                { title: 'Infrastructure optimization', description: 'Aterrisse na nuvem sem dívida técnica, automatizando e consolidando recursos.', icon: '☁️' },
+                { title: 'Data engineering', description: 'Consolidação de data centers e otimização de recursos para quebrar silos de dados.', icon: '📊' },
+                { title: 'Security & assurance', description: 'Expertise em cybersecurity para mitigar riscos em todas as camadas da plataforma.', icon: '🛡️' },
+            ]
+        },
+        features: [
+            'Arquiteturas Multi-tenant e SaaS',
+            'Ecossistemas de API Economy',
+            'DevOps e Orquestração de Containers',
+            'Data Lakes e Analytics em Tempo Real',
+            'Segurança nativa e Compliance',
+            'Escalabilidade Horizontal Infinita',
+        ],
+        benefits: [
+            'Crescimento sem custos de produção lineares',
+            'Abertura de novos fluxos de receita recorrente',
+            'Inovação acelerada via componentes reutilizáveis',
+            'Experiência do cliente unificada e fluida',
+            'Escala rápida entre diferentes mercados e verticais',
+            'Vantagem competitiva através do "efeito de rede"',
+        ],
+        sdlcPhases: [
+            { title: 'Identifying goals', description: 'Definição clara de resultados de negócio e desafios que a plataforma irá resolver.', icon: '🎯' },
+            { title: 'Examing infrastructure', description: 'Avaliação da infraestrutura atual para garantir suporte à funcionalidade desejada.', icon: '🏗️' },
+            { title: 'Choosing a roadmap', description: 'Criação de um roadmap estratégico para o MVP baseado em casos de uso de valor real.', icon: '🗺️' },
+            { title: 'Creating a platform', description: 'Construção de uma solução evolutiva projetada para crescer rapidamente em escala e funções.', icon: '🚀' },
+        ],
+        workingModels: [
+            { title: 'SaaS Platform Development', description: 'Transformação de operações em soluções de software escaláveis e rentáveis.', icon: '💻' },
+            { title: 'Cloud-based Platforms', description: 'Migração de legados ou implementação de infraestruturas cloud-native otimizadas.', icon: '☁️' },
+            { title: 'IoT Suite Development', description: 'Conectividade e comunicação real-time entre ferramentas e serviços industriais.', icon: '📠' },
+            { title: 'Microservices Migration', description: 'Aceleração de crescimento trocando arquiteturas monolíticas por microsserviços estáveis.', icon: '🧩' },
         ],
     },
 ];

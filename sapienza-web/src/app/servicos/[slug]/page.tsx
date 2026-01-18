@@ -11,7 +11,9 @@ import {
     SuccessCases,
     SplitContentSection,
     LifecycleDiagram,
-    ReadinessEvaluation
+    ReadinessEvaluation,
+    ServicesHub,
+    BlogSection
 } from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
 
@@ -144,6 +146,15 @@ export default async function ServicePage({
                 />
             )}
 
+            {/* Services Hub Section */}
+            {service.servHub && (
+                <ServicesHub
+                    title={service.servHub.title}
+                    description={service.servHub.description}
+                    items={service.servHub.items}
+                />
+            )}
+
             {/* Readiness Evaluation Section */}
             {service.readiness && (
                 <ReadinessEvaluation
@@ -209,6 +220,7 @@ export default async function ServicePage({
                 </div>
             </section>
 
+            <BlogSection />
             <CTA />
         </>
     );

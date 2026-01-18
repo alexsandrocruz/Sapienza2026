@@ -14,3 +14,5 @@ export * from './SuccessCases';
 export * from './SplitContentSection';
 export * from './LifecycleDiagram';
 export * from './ReadinessEvaluation';
+export * from './ServicesHub';
+export * from './BlogSection';

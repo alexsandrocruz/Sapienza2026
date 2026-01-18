@@ -45,6 +45,7 @@ export const serviceGroups: ServiceGroup[] = [
         icon: '💻',
         services: [
             { name: 'Desenvolvimento Customizado', href: '/servicos/desenvolvimento-de-software', description: 'Soluções sob medida' },
+            { name: 'Engenharia de Plataformas', href: '/servicos/desenvolvimento-de-plataformas', description: 'Escala e orquestração', isNew: true },
             { name: 'Apps Mobile', href: '/servicos/consultoria-apps-mobile', description: 'iOS, Android e híbridos' },
             { name: 'WhatsApp Chatbot', href: '/servicos/whatsapp-chatbot', description: 'Automação de atendimento' },
         ],
