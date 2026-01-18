@@ -1,7 +1,31 @@
-// Dados completos dos serviços extraídos do site Odoo
 export interface ServiceSection {
     title: string;
     description: string;
+}
+
+export interface LifecycleStep {
+    title: string;
+    description: string;
+    icon: string;
+    color?: string;
+}
+
+export interface ReadinessItem {
+    title: string;
+    items: string[];
+}
+
+export interface RichSection {
+    title: string;
+    description: string;
+    image?: string;
+    cta?: {
+        text: string;
+        link: string;
+    };
+    reversed?: boolean;
+    fullWidth?: boolean;
+    dark?: boolean;
 }
 
 export interface ServiceData {
@@ -12,6 +36,17 @@ export interface ServiceData {
     heroDescription: string;
     heroImage?: string;
     sections: ServiceSection[];
+    richSections?: RichSection[];
+    lifecycle?: {
+        title: string;
+        subtitle: string;
+        steps: LifecycleStep[];
+    };
+    readiness?: {
+        title: string;
+        subtitle: string;
+        boxes: ReadinessItem[];
+    };
     features: string[];
     benefits: string[];
     sdlcPhases?: {
@@ -433,47 +468,118 @@ export const servicesData: ServiceData[] = [
         slug: 'ia-generativa',
         badge: 'IA Generativa',
         title: 'Serviços de IA Generativa',
-        subtitle: 'As tendências de hoje são as táticas de amanhã',
-        heroDescription: 'De chatbots como Eliza à IA generativa moderna, o que era curiosidade tecnológica agora é prioridade de diretoria. Ajudamos nossos clientes a adotar e adaptar capacidades de GenAI para trabalhar de forma mais inteligente.',
+        subtitle: 'Hoje são tendências, amanhã são táticas',
+        heroDescription: 'Do início com o chatbot Eliza às soluções modernas de IA generativa, o que antes era uma curiosidade tecnológica agora é prioridade na diretoria. Na Sapienza, ajudamos nossos clientes a adotar e adaptar capacidades de GenAI para trabalhar de forma mais inteligente.',
         heroImage: '/images/services/gen-ai.png',
+        richSections: [
+            {
+                title: "As tendências de hoje são as táticas de amanhã",
+                description: "Na Sapienza, não apenas observamos a evolução da IA — nós a orquestramos. Do early adopter à maturidade empresarial, ajudamos você a transformar o hype em ROI real e tangível através de engenharia rigorosa e design centrado no humano.",
+                image: '/images/services/gen-ai-experience.png',
+                cta: { text: "Solicitar Proposta", link: "/contato" }
+            },
+            {
+                title: 'Criamos experiências de IA generativa com serviços de ponta a ponta',
+                description: 'Nossa abordagem transforma dados vastos em inteligência focada, automatiza workflows complexos e constrói experiências diferenciadas para seus colaboradores e clientes. Não apenas implantamos IA — colocamos a IA generativa onde ela é mais eficaz, entregando ganhos de produtividade, ROI e inovação segura e escalável.',
+                image: '/images/services/gen-ai-cases.png',
+                reversed: true,
+                cta: { text: 'Vamos conversar', link: '/contato' }
+            },
+            {
+                title: 'Guardian: Governança Estratégica para o amanhã',
+                description: 'IA Responsável tornada simples e acionável. Transforme sua estratégia de IA hoje com nosso framework Guardian, garantindo que sua inovação seja tão segura quanto poderosa.',
+                image: '/images/services/responsible-ai-flow.png',
+                dark: true,
+                cta: { text: 'Saiba mais', link: '/servicos/ia-responsavel' }
+            }
+        ],
+        lifecycle: {
+            title: 'Abordagem Sapienza: Guiando você em cada etapa da jornada GenAI',
+            subtitle: 'Ajudamos você na transição de casos de uso isolados para soluções operacionais de IA generativa em escala.',
+            steps: [
+                { title: 'Assess', description: 'Avaliação abrangente da maturidade da sua tecnologia GenAI e mapeamento de oportunidades.', icon: '🔍', color: '#10b981' },
+                { title: 'Design', description: 'Arquitetura de sistema robusta com governança incorporada para integração técnica segura.', icon: '🏗️', color: '#3b82f6' },
+                { title: 'Build & Deploy', description: 'Soluções GenAI prontas para produção através de pipelines integrados ao domínio.', icon: '🚀', color: '#f59e0b' },
+                { title: 'Adopt & Scale', description: 'Adoção em toda a organização através de frameworks de governança adaptativa e treinamento.', icon: '📈', color: '#ef4444' },
+                { title: 'Operate', description: 'Gestão proativa de performance via monitoramento MLOps e otimização contínua de modelos.', icon: '⚙️', color: '#8b5cf6' }
+            ]
+        },
+        readiness: {
+            title: 'Sua empresa está pronta para IA? Criando o caso para implementação de GenAI',
+            subtitle: 'Buscando clareza sobre onde começar? Oferecemos um assessment focado de duas semanas para identificar como a GenAI se alinha ao seu estado atual.',
+            boxes: [
+                {
+                    title: 'Necessidades de Negócio',
+                    items: [
+                        'Entender os desafios da GenAI',
+                        'Alinhar iniciativas de GenAI com objetivos estratégicos',
+                        'Maximizar impacto e ROI da GenAI'
+                    ]
+                },
+                {
+                    title: 'Resultados Chave',
+                    items: [
+                        'Relatório detalhado de viabilidade',
+                        'Lista priorizada de oportunidades de integração',
+                        'Análise de custo-benefício'
+                    ]
+                }
+            ]
+        },
         sections: [
             {
-                title: 'Assessment de Prontidão',
-                description: 'Analisamos sua prontidão para adotar IA generativa e desenvolvemos um roadmap claro: workshops de planejamento estratégico, avaliação de viabilidade e análise custo-benefício.',
+                title: 'AI Strategy Consulting',
+                description: 'Ajudamos você a analisar e avaliar sua prontidão para adotar GenAI e desenvolver um roadmap claro: workshops estratégicos, assessment de prontidão e roadmap de adoção.',
             },
             {
-                title: 'LLMs Customizados',
-                description: 'Desenvolvemos modelos de linguagem (LLMs) customizados ou modelos de domínio específico para suas necessidades: fine-tuning, treinamento e otimização.',
+                title: 'Model Development & Refinement',
+                description: 'Desenvolvemos LLMs customizados ou modelos de domínio específico: treinamento de modelos específicos, fine-tuning e otimização de performance.',
             },
             {
-                title: 'Integração de Sistemas',
-                description: 'Conectamos soluções de IA generativa com suas plataformas existentes: ERP, CRM, DMS, HRM. Análise de compatibilidade, integrações via API e automação de workflows.',
-            },
-            {
-                title: 'Governança e Compliance',
-                description: 'Estabelecemos frameworks para uso ético, seguro e compliant de IA: diretrizes éticas, auditorias de compliance e estratégias de gestão de risco.',
-            },
+                title: 'Enterprise Integration',
+                description: 'Conectamos soluções GenAI perfeitamente com suas plataformas existentes: ERP, CRM, DMS, HRM via integrações de API e automação de workflow.',
+            }
         ],
         features: [
             'Assessment de prontidão GenAI',
-            'LLMs customizados',
-            'Fine-tuning de modelos',
+            'LLMs customizados e Fine-tuning',
             'Integração ERP/CRM/HRM',
             'Framework GUARDIAN de governança',
-            'MLOps e monitoramento',
+            'MLOps e monitoramento contínuo',
+            'Estratégia de dados para GenAI',
         ],
         benefits: [
             'Dados transformados em inteligência',
             'Workflows complexos automatizados',
             'Experiências diferenciadas',
-            'ROI mensurável',
-            'Inovação escalável e segura',
+            'ROI mensurável e escalável',
+            'Inovação segura com Guardian',
             'Produtividade multiplicada',
         ],
+        sdlcPhases: [
+            { title: 'Readiness', description: 'Avaliação de maturidade de dados e infraestrutura para adoção de GenAI.', icon: '📊' },
+            { title: 'Strategy', description: 'Workshops estratégicos para alinhamento de objetivos e roadmap de implementação.', icon: '🎯' },
+            { title: 'Development', description: 'Criação de LLMs customizados, fine-tuning e treinamento de modelos de domínio.', icon: '🧠' },
+            { title: 'Integration', description: 'Conexão com ERP, CRM e sistemas legados via APIs seguras e escaláveis.', icon: '🔗' },
+            { title: 'Governance', description: 'Implementação do framework GUARDIAN para ética, segurança e compliance.', icon: '🛡️' },
+            { title: 'MLOps', description: 'Monitoramento contínuo de performance e suporte técnico pós-deploy.', icon: '⚙️' },
+        ],
         workingModels: [
-            { title: 'GenAI Strategy', description: 'Workshops para alinhar iniciativas de IA com objetivos estratégicos.', icon: '🎯' },
-            { title: 'Custom Model Development', description: 'Desenvolvimento de LLMs específicos para seu domínio de negócio.', icon: '🧠' },
-            { title: 'Enterprise Integration', description: 'Conexão segura com infraestrutura de dados corporativa.', icon: '🔗' },
+            { title: 'IntelliAssistant', description: 'Plataforma de assistente virtual para reduzir carga operacional e acelerar decisões.', icon: '🤖' },
+            { title: 'GenAI Digital Twin', description: 'Acelerador de gêmeos digitais para otimizar processos e ativos com poder generativo.', icon: '♊' },
+            { title: 'Strategic Consulting', description: 'Acompanhamento ponta a ponta na jornada de transformação com IA Generativa.', icon: '💡' },
+        ],
+        successCases: [
+            {
+                client: 'Digital Health & Retail',
+                description: 'Implementação de chatbots de engajamento e automação de atendimento com análise de sentimento.',
+                metrics: ['Suporte clínico inteligente', 'Automação de customer service', 'Otimização de supply chain'],
+            },
+            {
+                client: 'Fintech & Insurance',
+                description: 'Automação de sinistros, detecção de fraude e análise de documentos complexos/contratos.',
+                metrics: ['Análise de contratos 10x mais rápida', 'Detecção preditiva de fraudes', 'Score de risco automático'],
+            },
         ],
     },
     {
@@ -517,10 +623,30 @@ export const servicesData: ServiceData[] = [
             'Reputação protegida',
             'IA como ativo controlado',
         ],
+        sdlcPhases: [
+            { title: 'Assessment', description: 'Avaliação de maturidade de IA e categorização de riscos para governança sólida.', icon: '🔍' },
+            { title: 'Categorization', description: 'Classificação de níveis de risco associados ao uso de cada solução de IA.', icon: '📊' },
+            { title: 'Governance', description: 'Implementação de framework abrangente: dados, modelos, viés e transparência.', icon: '⚖️' },
+            { title: 'Testing', description: 'Adoção de práticas consistentes para testar justiça, segurança e confiabilidade.', icon: '🛡️' },
+            { title: 'Monitoring', description: 'Monitoramento contínuo para manter conformidade com leis e padrões em evolução.', icon: '⚙️' },
+            { title: 'Auditing', description: 'Auditorias regulares para garantir que os princípios éticos sejam seguidos à risca.', icon: '📋' },
+        ],
         workingModels: [
-            { title: 'Governance Framework', description: 'Implementação do framework GUARDIAN para controle total.', icon: '⚖️' },
-            { title: 'Privacy Audit', description: 'Auditorias focadas em proteção de dados e privacidade em IA.', icon: '🔍' },
-            { title: 'Ethical Guidelines', description: 'Desenvolvimento de princípios éticos internos para uso de IA.', icon: '🤝' },
+            { title: 'RAI FastTrack', description: 'Adoção acelerada de princípios éticos em seus modelos de IA existentes.', icon: '⚡' },
+            { title: 'Ethics Consulting', description: 'Consultoria estratégica para alinhar inovação com valores humanos e legais.', icon: '🤝' },
+            { title: 'Compliance Audit', description: 'Auditorias técnicas focadas em proteção de dados e neutralidade de algoritmos.', icon: '🕵️' },
+        ],
+        successCases: [
+            {
+                client: 'Fintech & Lending',
+                description: 'Solução de empréstimos baseada em IA com princípios de transparência e abordagem livre de viés.',
+                metrics: ['Score de crédito transparente', 'Livre de viés discriminatório', 'Conformidade regulatória total'],
+            },
+            {
+                client: 'Global IT (HR Tech)',
+                description: 'Plataforma para avaliação de habilidades de colaboradores com 100% de transparência e justiça.',
+                metrics: ['Avaliação de skills justa', 'Transparência para colaboradores', 'Decisões baseadas em talento real'],
+            },
         ],
     },
     {

@@ -3,7 +3,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 import { DominusForm } from '@/components/ui';
-import { CTA, StatsBanner, SDLCTimeline, WorkingModels, SuccessCases } from '@/components/sections';
+import {
+    CTA,
+    StatsBanner,
+    SDLCTimeline,
+    WorkingModels,
+    SuccessCases,
+    SplitContentSection,
+    LifecycleDiagram,
+    ReadinessEvaluation
+} from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
 
 // Gerar metadados dinâmicos
@@ -125,6 +134,29 @@ export default async function ServicePage({
 
             {/* Stats Banner */}
             <StatsBanner stats={service.features} />
+
+            {/* Lifecycle Diagram Section */}
+            {service.lifecycle && (
+                <LifecycleDiagram
+                    title={service.lifecycle.title}
+                    subtitle={service.lifecycle.subtitle}
+                    steps={service.lifecycle.steps}
+                />
+            )}
+
+            {/* Readiness Evaluation Section */}
+            {service.readiness && (
+                <ReadinessEvaluation
+                    title={service.readiness.title}
+                    subtitle={service.readiness.subtitle}
+                    boxes={service.readiness.boxes}
+                />
+            )}
+
+            {/* Rich Sections (Split Layouts) */}
+            {service.richSections && service.richSections.map((rich, idx) => (
+                <SplitContentSection key={idx} section={rich} />
+            ))}
 
             {/* SDLC Timeline Section */}
             {service.sdlcPhases && (
