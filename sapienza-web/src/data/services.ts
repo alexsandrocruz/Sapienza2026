@@ -35,7 +35,7 @@ export interface ServiceData {
     subtitle: string;
     heroDescription: string;
     heroImage?: string;
-    sections: ServiceSection[];
+    sections?: ServiceSection[];
     richSections?: RichSection[];
     lifecycle?: {
         title: string;
@@ -400,67 +400,63 @@ export const servicesData: ServiceData[] = [
     {
         slug: 'ia-enabled-engineering',
         badge: 'IA Engineering',
-        title: 'Engenharia Habilitada por IA',
-        subtitle: 'Engenharia mais rápida, inteligente e eficiente com IA no núcleo',
-        heroDescription: 'Empresas que adotam workflows de IA entregam com mais eficiência, lançam produtos digitais mais rápido e resolvem complexidade com menos atrito. Ajudamos suas equipes a adotar uma abordagem sistemática de engenharia habilitada por IA.',
+        title: 'Engenharia de Software Habilitada por IA',
+        subtitle: 'Engenharia mais rápida, inteligente e eficiente com a IA no núcleo',
+        heroDescription: 'Empresas que adotam workflows de IA entregam com mais eficiência, lançam produtos digitais mais rápido e resolvem complexidade com menos atrito. Na Sapienza, ajudamos seus times a adotar uma abordagem sistemática de engenharia habilitada por IA que impulsiona a velocidade e a qualidade do software.',
         heroImage: '/images/services/ai-engineering.png',
-        sections: [
+        richSections: [
             {
-                title: 'IA no Ciclo de Desenvolvimento',
-                description: 'Integramos IA em cada fase do SDLC: desde análise de requisitos até manutenção. IA suporta decisões de estratégia analisando sistemas, prontidão de dados e dívida técnica.',
+                title: 'A engenharia habilitada por IA impulsiona ganhos reais de produtividade',
+                description: 'De automação inteligente a decisões baseadas em dados, incorporamos a IA em todo o ciclo de vida da engenharia. Nossos serviços garantem que sua entrega seja mais fluida e sua escala seja mais inteligente, reduzindo a frustração com tarefas rotineiras e focando no que realmente importa: inovação.',
+                image: '/images/services/ai-pods-transition.png',
+                cta: { text: 'Agendar Workshop', link: '/contato' }
             },
             {
-                title: 'AI Pods: Equipes Potencializadas',
-                description: 'Evoluímos de times ágeis tradicionais para AI Pods: ciclos mais curtos, mais ownership, execução mais inteligente com agentes IA cuidando de tarefas rotineiras.',
-            },
-            {
-                title: 'Geração e Revisão de Código',
-                description: 'Código gerado, refatorado e documentado automaticamente com IA, reduzindo trabalho repetitivo e aumentando a velocidade do desenvolvedor.',
-            },
-            {
-                title: 'Testes e Monitoramento Preditivo',
-                description: 'IA cria, atualiza y executa testes automaticamente, detectando problemas mais cedo. Monitoramento preditivo mantém sistemas estáveis.',
-            },
+                title: 'Evoluindo de times Ágeis para AI Pods',
+                description: 'Vá além do ágil tradicional. Nossos AI Pods são unidades de entrega independentes onde a IA agêntica orquestra a execução. Resultado: ciclos mais curtos, mais sentimento de dono por parte do time e execução mais inteligente sem a necessidade de expansão imediata de equipe.',
+                reversed: true,
+                image: '/images/services/gen-ai-experience.png'
+            }
         ],
         features: [
-            '53% mais foco em tarefas',
+            '53% mais foco em tarefas reais',
             '79% busca de informação mais rápida',
-            '51% eficiência em code review',
-            '100% ganho de produtividade',
-            '3x menor time-to-market',
-            '8x prototipagem mais rápida',
+            '51% mais eficiência em code reviews',
+            '100% de ganho na produtividade de engenharia',
+            '3x menor time-to-market em produtos digitais',
+            '8x prototipagem mais rápida com IA Agêntica',
         ],
         benefits: [
-            'Ciclos de entrega mais curtos',
-            'Menos dependências e gargalos',
-            'Qualidade consistente',
-            'Increments de produto mais rápidos',
-            'Escala sem aumentar equipe',
-            'Menos frustração com tarefas rotineiras',
+            'Ciclos de entrega medidos em dias, não semanas',
+            'Menos dependências e gargalos operacionais',
+            'Qualidade consistente através de IA-QA automatizado',
+            'Incrementos de produto mais frequentes e seguros',
+            'Escala de software sem expandir custos lineares',
+            'Time-to-market agressivo para novos produtos',
         ],
         sdlcPhases: [
-            { title: 'Strategy', description: 'IA analisa sistemas, prontidão de dados e dívida técnica para moldar o roadmap.', icon: '🎯' },
-            { title: 'Requirements', description: 'IA analisa necessidades do produto e comportamento do usuário para priorização inteligente.', icon: '📋' },
-            { title: 'Architecture', description: 'Recomendações inteligentes ajudam times a escolher padrões ideais e arquiteturas escaláveis.', icon: '🏗️' },
-            { title: 'Development', description: 'Geração de código, refatoração e documentação automática reduzem trabalho rotineiro.', icon: '💻' },
-            { title: 'Testing', description: 'IA cria e executa testes automaticamente, melhorando a cobertura sem esforço extra.', icon: '🛡️' },
-            { title: 'Operations', description: 'Monitoramento preditivo e análise de incidentes mantêm sistemas estáveis.', icon: '⚙️' },
+            { title: 'Strategy', description: 'IA analisa sistemas, prontidão de dados e dívida técnica para moldar o roadmap de engenharia.', icon: '🎯' },
+            { title: 'Requirements', description: 'Insights inteligentes ajudam a priorizar o que entrega mais valor com base em dados históricos.', icon: '📋' },
+            { title: 'Architecture', description: 'Recomendações técnicas ajudam times a escolher padrões ideais e arquiteturas escaláveis.', icon: '🏗️' },
+            { title: 'Development', description: 'Geração de código, refatoração e documentação automática reduzem o trabalho rotineiro em 80%.', icon: '💻' },
+            { title: 'Testing', description: 'IA cria, atualiza e executa testes automaticamente, melhorando a cobertura sem esforço extra.', icon: '🛡️' },
+            { title: 'Operations', description: 'Monitoramento preditivo e análise de incidentes mantêm sistemas estáveis e resilientes.', icon: '⚙️' },
         ],
         workingModels: [
-            { title: 'AI Pods', description: 'Impulsione a velocidade desde o dia 1 com entrega agêntica orquestrada.', icon: '🚀' },
-            { title: 'Guided AI Transformation', description: 'Transformação completa com nossos especialistas co-pilotando a jornada.', icon: '👨‍✈️' },
-            { title: 'SLA-based Turnaround', description: 'Entregas rápidas guiadas por métricas de valor e SLAs claros.', icon: '⏱️' },
+            { title: 'Product Engineering with AI Pods', description: 'Impulsione a velocidade desde o dia 1 com entrega agêntica orquestrada e pods independentes.', icon: '🚀' },
+            { title: 'Guided AI Transformation', description: 'Plano e execução de transformação total com nossos especialistas co-pilotando a jornada.', icon: '👨‍✈️' },
+            { title: 'SLA-based Turnaround', description: 'Entregas ultra-rápidas e redução de custos operacionais guiados por métricas de valor e SLAs.', icon: '⏱️' },
         ],
         successCases: [
             {
-                client: 'Digital Health Company',
-                description: 'Reconstrução rápida de app móvel usando AI Pods e engenharia reversa de fluxos legados.',
+                client: 'Digital Health Leader',
+                description: 'Reconstrução rápida de aplicação móvel usando AI Pods e engenharia reversa de fluxos legados via IA.',
                 metrics: ['55%+ redução de investimento', '1.5x menor time-to-market', '40% menos defeitos'],
             },
             {
-                client: 'Traffic Solution Leader',
-                description: 'Uso de Agentic IA para criar protótipos de UI baseados em dados de mapas open-source.',
-                metrics: ['Protótipo em 1 DIA', '2x aceleração no desenvolvimento', '70% menor investimento'],
+                client: 'Traffic Solution Pioneer',
+                description: 'Uso de IA Agêntica para criar protótipos de UI funcionais em tempo recorde baseados em dados open-source.',
+                metrics: ['Protótipo entregue em 1 DIA', '2x aceleração no ciclo de dev', '70% menor custo de prototipagem'],
             },
         ],
     },

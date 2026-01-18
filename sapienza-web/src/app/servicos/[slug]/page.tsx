@@ -174,21 +174,23 @@ export default async function ServicePage({
             )}
 
             {/* Detailed Content Grid (Fallback or Additional) */}
-            <section className="py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {service.sections.map((section, index) => (
-                            <div
-                                key={index}
-                                className="space-y-4"
-                            >
-                                <h3 className="text-xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">{section.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{section.description}</p>
-                            </div>
-                        ))}
+            {service.sections && service.sections.length > 0 && (
+                <section className="py-24 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {service.sections.map((section, index) => (
+                                <div
+                                    key={index}
+                                    className="space-y-4"
+                                >
+                                    <h3 className="text-xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">{section.title}</h3>
+                                    <p className="text-gray-600 leading-relaxed">{section.description}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* Benefits */}
             <section className="py-24 bg-[#0b0f19]">
