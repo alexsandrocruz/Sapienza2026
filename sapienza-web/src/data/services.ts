@@ -35,6 +35,15 @@ export interface ServiceHubItem {
     icon?: string;
 }
 
+export interface PMOFrameworkTab {
+    id: string;
+    label: string;
+    title: string;
+    description: string;
+    items: string[];
+    image: string;
+}
+
 export interface ServiceData {
     slug: string;
     badge: string;
@@ -60,6 +69,11 @@ export interface ServiceData {
         title: string;
         description: string;
         items: ServiceHubItem[];
+    };
+    pmoFramework?: {
+        title: string;
+        description: string;
+        tabs: PMOFrameworkTab[];
     };
     sdlcPhases?: {
         title: string;
@@ -868,6 +882,102 @@ export const servicesData: ServiceData[] = [
             { title: 'Cloud-based Platforms', description: 'Migração de legados ou implementação de infraestruturas cloud-native otimizadas.', icon: '☁️' },
             { title: 'IoT Suite Development', description: 'Conectividade e comunicação real-time entre ferramentas e serviços industriais.', icon: '📠' },
             { title: 'Microservices Migration', description: 'Aceleração de crescimento trocando arquiteturas monolíticas por microsserviços estáveis.', icon: '🧩' },
+        ],
+    },
+    {
+        slug: 'gerenciamento-de-projetos',
+        badge: 'Delivery Excellence',
+        title: 'Gerenciamento de Projetos & PMO',
+        subtitle: 'Domine a complexidade para entregar excelência em cada projeto',
+        heroDescription: 'Transformamos incerteza em resultados previsíveis. Através de um Escritório de Gerenciamento de Projetos (PMO) estratégico, garantimos que cada iniciativa esteja alinhada aos seus objetivos de negócio, dentro do prazo e orçamento, com visibilidade total em todas as etapas.',
+        heroImage: '/images/services/pmo-hero.png',
+        richSections: [
+            {
+                title: 'Transformando tangibilidade em valor de negócio',
+                description: 'Nossos serviços de PMO não se limitam a cronogramas. Focamos em resultados que impactam diretamente o lucro e o sucesso a longo prazo, eliminando gargalos de inovação e falhas de comunicação que drenam orçamentos.',
+                image: '/images/services/ai-engineering.png',
+                cta: { text: 'Agendar Diagnóstico de Portfólio', link: '/contato' }
+            }
+        ],
+        servHub: {
+            title: 'Nossos Serviços de PMO as a Service',
+            description: 'Orquestração de ponta a ponta para garantir execução eficiente e resultados consistentes.',
+            items: [
+                { title: 'Gestão de Portfólio (PPM)', description: 'Visibilidade unificada e controle total sobre todos os projetos e recursos.', icon: '📊' },
+                { title: 'Change Management', description: 'Estratégias de mudança que garantem a adoção fluida de novos processos.', icon: '🔄' },
+                { title: 'Gestão de Riscos', description: 'Identificação proativa e mitigação de ameaças antes que impactem a operação.', icon: '🛡️' },
+                { title: 'Treinamento & Coaching', description: 'Capacitação de alta performance em Scrum, Kanban, SAFe e Hybrid Delivery.', icon: '🎓' },
+                { title: 'Otimização de Processos', description: 'Refinamento contínuo das metodologias para maximizar a eficiência.', icon: '⚙️' },
+            ]
+        },
+        readiness: {
+            title: 'Entregas Principais para o Sucesso',
+            subtitle: 'Resultados operacionais que garantem a excelência na entrega.',
+            boxes: [
+                { title: 'Processos Estratégicos', items: ['Rollout em fases', 'Plano de comunicação', 'Monitoramento de benefícios'] },
+                { title: 'Excelência Operacional', items: ['Dashboards customizados', 'Gestão de recursos', 'Ferramentas de IA'] },
+                { title: 'Framework de Gestão', items: ['Metodologias personalizadas', 'Checklists prontos para uso', 'Governança robusta'] },
+                { title: 'Treinamento de Times', items: ['Workshops de PM Power Skills', 'Guias detalhados do usuário', 'Mentoria especializada'] },
+            ]
+        },
+        pmoFramework: {
+            title: 'IDEAbook Framework',
+            description: 'Nosso Delivery Excellence Accelerator que oferece uma visão abrangente dos fluxos de trabalho e princípios de entrega eficiente.',
+            tabs: [
+                {
+                    id: 'governance',
+                    label: 'Governance',
+                    title: 'Gestão Estratégica & Qualidade',
+                    description: 'Uma abordagem estruturada para gerenciar projetos, contas e qualidade com padrões de alto desempenho.',
+                    items: [
+                        'Melhores práticas de performance',
+                        'Navegação estratégica de responsabilidades',
+                        'Gestão centralizada de stakeholders',
+                        'Estratégias de mitigação de risco'
+                    ],
+                    image: '/images/services/software-dev-hero.png'
+                },
+                {
+                    id: 'engineering',
+                    label: 'Engineering',
+                    title: 'Inovação & Arquitetura Técnica',
+                    description: 'Definição da abordagem para desenvolvimento de produto e maturidade tecnológica em cada entrega.',
+                    items: [
+                        'Padrões de codificação e princípios de design',
+                        'Estratégias de implementação de tecnologia',
+                        'Processos de QA robustos',
+                        'Gestão de inovação sob restrições'
+                    ],
+                    image: '/images/services/gen-ai-experience.png'
+                },
+                {
+                    id: 'operations',
+                    label: 'Operations',
+                    title: 'Excelência em Execução',
+                    description: 'Alinhamento de capital humano e otimização de processos em ambientes de projetos complexos.',
+                    items: [
+                        'Execução suave de tarefas críticas',
+                        'Alocação eficiente de recursos escassos',
+                        'Melhoria contínua de processos core',
+                        'Sucesso na entrega e prazos cumpridos'
+                    ],
+                    image: '/images/services/platform-growth.png'
+                }
+            ]
+        },
+        features: [
+            'Previsibilidade de Entrega 99%',
+            'Redução de Custos Operacionais',
+            'Transparência Real-time',
+            'Metodologia Ágil e Híbrida',
+            'Foco em ROI e Resultados',
+        ],
+        benefits: [
+            'Entrega de valor previsível',
+            'Melhoria contínua de processos',
+            'Execução transparente',
+            'Processos maduros e adaptáveis',
+            'Foco total nos Stakeholders',
         ],
     },
 ];

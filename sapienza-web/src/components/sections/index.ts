@@ -16,3 +16,5 @@ export * from './LifecycleDiagram';
 export * from './ReadinessEvaluation';
 export * from './ServicesHub';
 export * from './BlogSection';
+export * from './IDEAbookFramework';
+export * from './TrustLogos';

@@ -13,7 +13,9 @@ import {
     LifecycleDiagram,
     ReadinessEvaluation,
     ServicesHub,
-    BlogSection
+    BlogSection,
+    IDEAbookFramework,
+    TrustLogos
 } from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
 
@@ -146,12 +148,29 @@ export default async function ServicePage({
                 />
             )}
 
+            {/* Trust Logos (Companies that trust us) */}
+            <TrustLogos logos={[
+                { name: 'Global Retailer', image: '/images/clients/dkv.png' },
+                { name: 'Swiss FinTech', image: '/images/clients/swissquote.png' },
+                { name: 'Telecom Giant', image: '/images/clients/swisscom.png' },
+                { name: 'E-commerce Leader', image: '/images/clients/omio.png' },
+            ]} />
+
             {/* Services Hub Section */}
             {service.servHub && (
                 <ServicesHub
                     title={service.servHub.title}
                     description={service.servHub.description}
                     items={service.servHub.items}
+                />
+            )}
+
+            {/* IDEAbook Framework (PMO Specific) */}
+            {service.pmoFramework && (
+                <IDEAbookFramework
+                    title={service.pmoFramework.title}
+                    description={service.pmoFramework.description}
+                    tabs={service.pmoFramework.tabs}
                 />
             )}
 
