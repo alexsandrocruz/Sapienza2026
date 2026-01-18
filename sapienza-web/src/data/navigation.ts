@@ -55,7 +55,7 @@ export const serviceGroups: ServiceGroup[] = [
         icon: '🚀',
         services: [
             { name: 'Desenvolvimento de Produtos', href: '/servicos/desenvolvimento-de-produtos', description: 'Do conceito ao lançamento' },
-            { name: 'Desenvolvimento de MVP', href: '/servicos/desenvolvimento-de-mvp', description: 'Valide sua ideia rápido' },
+            { name: 'Desenvolvimento de Aplicações & MVP', href: '/servicos/desenvolvimento-de-mvp', description: 'Valide sua ideia rápido' },
             { name: 'Gerenciamento de Projetos', href: '/servicos/gerenciamento-de-projetos', description: 'Excelência em PMO e Delivery', isNew: true },
             { name: 'Design de Experiência', href: '/servicos/design-de-experiencia', description: 'UX/UI que encanta' },
         ],

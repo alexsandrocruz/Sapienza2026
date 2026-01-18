@@ -204,43 +204,76 @@ export const servicesData: ServiceData[] = [
     },
     {
         slug: 'desenvolvimento-de-mvp',
-        badge: 'MVP',
-        title: 'Desenvolvimento de MVP',
-        subtitle: 'Acelere seu tempo de lançamento e minimize custos',
-        heroDescription: 'Otimize seu caminho para um lançamento de produto bem-sucedido em parceria com nossa empresa de desenvolvimento MVP de classe mundial.',
-        sections: [
+        badge: 'Software Engineering',
+        title: 'Desenvolvimento de Aplicações & MVP',
+        subtitle: 'Construa para evoluir, não apenas para atingir a paridade',
+        heroDescription: 'Software deve ser um impulsionador, não uma âncora. Desenvolvemos ecossistemas digitais com adaptabilidade integrada, alimentados por arquiteturas modulares e componentes reutilizáveis, garantindo que você vença agora e nas próximas décadas.',
+        heroImage: '/images/services/app-dev-hero.png',
+        richSections: [
             {
-                title: 'Especialista em MVP',
-                description: 'Ao contar com a SAPIENZA para desenvolver seu Produto Mínimo Viável, você recebe informações valiosas sobre o que realmente é viável para seus clientes. Analisamos sua visão de todos os ângulos.',
+                title: 'Abordagem baseada em evidência, não em suposições',
+                description: 'Traçamos o caminho do MVP até o escala global, contando com feedback real dos usuários e experimentação contínua. Nosso Innovation Studio funde design thinking com expertise em cloud-native para acelerar o retorno sobre o investimento.',
+                image: '/images/services/software-dev-hero.png',
+                cta: { text: 'Agendar Workshop de Discovery', link: '/contato' }
+            }
+        ],
+        sdlcPhases: [
+            { title: 'Discovery & Consulting', description: 'Workshop intensivo para alinhar investimentos com estratégia de negócio e métricas North Star.', icon: '🔍' },
+            { title: 'Agile Product Engineering', description: 'Desenvolvimento cross-functional com ciclos de entrega contínua e iterações rápidas.', icon: '⚙️' },
+            { title: 'Platform & Cloud Enablement', description: 'Garantia de escalabilidade desde o primeiro commit com arquiteturas cloud-native.', icon: '☁️' },
+            { title: 'AI & Automation Integration', description: 'Aceleração de ciclos com DevOps autônomo e desenvolvimento assistido por IA.', icon: '🤖' },
+            { title: 'Otimização Contínua', description: 'Monitoramento APM e SRE para reduzir dívida técnica e garantir confiabilidade total.', icon: '📈' },
+        ],
+        servHub: {
+            title: 'Serviços Core de Desenvolvimento',
+            description: 'Soluções sob medida para workflows complexos e requisitos de escala.',
+            items: [
+                { title: 'Custom App Development', description: 'Mapeamos tecnologia aos seus processos de negócio com componentes modulares e reutilizáveis.', icon: '🛠️' },
+                { title: 'Modernização de Legado', description: 'Transformação incremental de sistemas legados sem interrupções operacionais críticas.', icon: '♻️' },
+                { title: 'Cloud-native Development', description: 'Implementação de CI/CD, autoscaling e observabilidade nativa sem lock-in de fornecedor.', icon: '🌐' },
+                { title: 'Low-code/No-code Solutions', description: 'Aceleração em até 4x no desenvolvimento de back-office e ferramentas internas seguras.', icon: '⚡' },
+            ]
+        },
+        readiness: {
+            title: 'Capability-Enhancing Tracks',
+            subtitle: 'Trilhas de especialização para fortalecer seu ecossistema digital.',
+            boxes: [
+                { title: 'Mobile Excellence', items: ['Apps nativos e cross-platform', 'Performance impecável', 'User retention focus'] },
+                { title: 'AI-Augmented Apps', items: ['Modelos ML/DL integrados', 'LLM APIs & Analytics', 'Experiências inteligentes'] },
+                { title: 'Composable Architectures', items: ['Microservices decoupled', 'API-first communication', 'Deployments ultra-rápidos'] },
+                { title: 'Security & Compliance', items: ['Criptografia avançada', 'Real-time threat monitoring', 'Compliance hardened'] },
+            ]
+        },
+        successCases: [
+            {
+                client: 'Multinational Telecom Company',
+                description: 'Desenvolvimento de SuperApp para gestão de planos e serviços digitais, integrando sistemas legados complexos.',
+                metrics: ['Consolidação de 14 bots em 1 AI Assistant', 'ROI acelerado em 18 meses', 'Faturamento 100% data-driven'],
             },
             {
-                title: 'Análise de Negócios',
-                description: 'Começamos com um mergulho profundo em seus objetivos de negócios. Examinamos sua visão de produto em termos de objetivos, prioridades e desafios para criar um MVP que atenda às suas necessidades.',
+                client: 'Retail Home Improvement Leader',
+                description: 'Consultoria digital e engenharia de produto nativo para handicraft industry, focando em revenue streams e UX mobile.',
+                metrics: ['45% menor abandono de carrinho', 'Crescimento para 1.8M assinantes', 'IPO de US$ 1.03 bi de market cap'],
             },
             {
-                title: 'Estratégia de Marketing',
-                description: 'Investigamos o que os usuários desejam diretamente. Analisamos seu mercado-alvo para encontrar os requisitos do setor e desenvolver um produto que os entusiasme.',
-            },
-            {
-                title: 'Abordagem centrada no usuário',
-                description: 'Nosso processo fornece informações sobre as coisas que seus clientes valorizam e permite fazer alterações que otimizem o desempenho do produto.',
+                client: 'National eHealth Ecosystem',
+                description: 'Construção de ecossistema nacional de saúde servindo 30M+ cidadãos, incluindo telemedicina e portal do paciente.',
+                metrics: ['Interação para 30M+ usuários', 'Redução em 40% de erros médicos', '$1M+ economia anual operacional'],
             },
         ],
         features: [
-            'Entrega em 4-8 semanas',
-            'Funcionalidades essenciais',
-            'Design profissional',
-            'Infraestrutura escalável',
-            'Métricas de validação',
-            'Feedback real do mercado',
+            'Desenvolvimento Agile Real',
+            'Arquitetura Cloud-native',
+            'IA Integrada no Fluxo',
+            'Design focado em CX',
+            'Segurança por Design',
         ],
         benefits: [
-            'Investimento inicial reduzido',
-            'Validação rápida de ideias',
-            'Base para crescimento',
-            'Atrair investidores',
-            'Lançamento no prazo e orçamento',
-            'Abordagem centrada no usuário',
+            'Evolução contínua do sistema',
+            'Escalabilidade sem interrupção',
+            'Time-to-market acelerado',
+            'Redução de custos de infra',
+            'Fim da fragmentação de dados',
         ],
     },
     {
