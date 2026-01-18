@@ -9,7 +9,7 @@ interface TrustLogosProps {
     }[];
 }
 
-export function TrustLogos({ title = 'Empresas que confiam na Sapienza', logos }: TrustLogosProps) {
+export default function TrustLogos({ title = 'Empresas que confiam na Sapienza', logos }: TrustLogosProps) {
     return (
         <section className="py-16 bg-[#f0f7f7]/50 border-y border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

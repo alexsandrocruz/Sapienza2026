@@ -75,6 +75,34 @@ export interface ServiceData {
         description: string;
         tabs: PMOFrameworkTab[];
     };
+    cloudLoop?: {
+        title: string;
+        description: string;
+        quadrants: {
+            id: 'assess' | 'operate' | 'maintain' | 'moderate';
+            title: string;
+            services: string[];
+        }[];
+    };
+    cloudPartners?: {
+        title: string;
+        items: {
+            name: string;
+            description: string;
+            logo: string;
+            link: string;
+        }[];
+    };
+    cloudBlogArticles?: {
+        title: string;
+        articles: {
+            category: string;
+            title: string;
+            image: string;
+            link: string;
+            type: 'case-study' | 'blog-post' | 'white-paper';
+        }[];
+    };
     sdlcPhases?: {
         title: string;
         description: string;
@@ -776,41 +804,127 @@ export const servicesData: ServiceData[] = [
         slug: 'cloud-devops',
         badge: 'Cloud & DevOps',
         title: 'Cloud & DevOps',
-        subtitle: 'Infraestrutura moderna e entrega contínua',
-        heroDescription: 'Migre para a nuvem, otimize custos e implemente práticas de DevOps que aceleram deploys e aumentam a confiabilidade dos seus sistemas.',
-        sections: [
+        subtitle: 'Infraestrutura moderna e entrega contínua para escala global',
+        heroDescription: 'Aplique o poder de serviços de nuvem integrados e DevOps para impulsionar a escala do seu negócio, aumentar a eficiência de desempenho e otimizar custos. De migrações críticas a operações autônomas, garantimos que sua jornada tecnológica seja fluida e resiliente.',
+        heroImage: '/images/services/cloud-hero.png',
+        richSections: [
             {
-                title: 'Migração para Cloud',
-                description: 'Planejamento e execução de migração para AWS, Azure ou GCP com mínimo downtime, otimização de custos e arquitetura cloud-native.',
-            },
-            {
-                title: 'Kubernetes e Containers',
-                description: 'Implemente orquestração de containers com Kubernetes, Docker e service mesh para aplicações escaláveis e resilientes.',
-            },
-            {
-                title: 'CI/CD Moderno',
-                description: 'Pipelines de integração e entrega contínua com GitHub Actions, GitLab CI, ArgoCD e ferramentas de IaC como Terraform.',
-            },
-            {
-                title: 'Observabilidade',
-                description: 'Monitoramento, logging e tracing unificados com Grafana, Prometheus, Datadog ou Elastic Stack para visibilidade total.',
-            },
+                title: 'Desafios que resolvemos com Cloud & DevOps',
+                description: 'Aumente a produtividade e otimize custos adotando uma abordagem de "pay-as-you-go" e automação extrema. Nossa expertise ajuda a eliminar silos operacionais, garantindo que o desenvolvimento e as operações trabalhem em um fluxo único de valor.',
+                image: '/images/services/software-dev-hero.png',
+                cta: { text: 'Agendar Assessment de Nuvem', link: '/contato' }
+            }
         ],
+        cloudLoop: {
+            title: 'Serviços Sapienza Cloud para suas necessidades de negócio',
+            description: 'Nossa abordagem de ciclo infinito garante que sua infraestrutura evolua conforme sua demanda.',
+            quadrants: [
+                {
+                    id: 'assess',
+                    title: 'Assess',
+                    services: [
+                        'Infrastructure assessment',
+                        'Cloud readiness assessment',
+                        'Security & compliance audit',
+                        'FinOps cost optimization'
+                    ]
+                },
+                {
+                    id: 'operate',
+                    title: 'Operate',
+                    services: [
+                        'Cloud migration (Lift & Shift, Refactor)',
+                        'Infrastructure as Code (IaC)',
+                        'Container orchestration (K8s)',
+                        'Serverless implementations'
+                    ]
+                },
+                {
+                    id: 'maintain',
+                    title: 'Maintain',
+                    services: [
+                        'SRE & Managed Services',
+                        '24/7 Monitoring & Incident Response',
+                        'Backup & Disaster Recovery',
+                        'Platform Engineering'
+                    ]
+                },
+                {
+                    id: 'moderate',
+                    title: 'Moderate',
+                    services: [
+                        'CI/CD pipeline automation',
+                        'DevSecOps integration',
+                        'Cloud-native transformation',
+                        'Hybrid cloud orchestration'
+                    ]
+                }
+            ]
+        },
+        cloudPartners: {
+            title: 'Parcerias para o seu sucesso',
+            items: [
+                {
+                    name: 'Amazon Web Services (AWS)',
+                    description: 'Entregamos soluções escaláveis e resilientes usando o ecossistema líder mundial em nuvem.',
+                    logo: '/images/partners/aws-logo.svg',
+                    link: 'https://aws.amazon.com'
+                },
+                {
+                    name: 'Microsoft Azure',
+                    description: 'Aproveite a integração profunda com o ecossistema Microsoft para transformar sua produtividade.',
+                    logo: '/images/partners/azure-logo.svg',
+                    link: 'https://azure.microsoft.com'
+                },
+                {
+                    name: 'Google Cloud Platform (GCP)',
+                    description: 'Inovação através de dados, IA e infraestrutura global otimizada para performance.',
+                    logo: '/images/partners/gcp-logo.svg',
+                    link: 'https://cloud.google.com'
+                }
+            ]
+        },
+        cloudBlogArticles: {
+            title: 'Impulsionando negócios com Cloud & DevOps',
+            articles: [
+                {
+                    category: 'Case Study',
+                    title: 'Como otimizamos a infraestrutura de uma Tech Unicórnio em 40%',
+                    image: '/images/services/cloud-case-1.png',
+                    link: '#',
+                    type: 'case-study'
+                },
+                {
+                    category: 'Blog Post',
+                    title: 'O Guia Definitivo para Migração Cloud-Native em 2026',
+                    image: '/images/services/cloud-case-2.png',
+                    link: '#',
+                    type: 'blog-post'
+                },
+                {
+                    category: 'White Paper',
+                    title: 'DevOps & IA: A Nova Fronteira da Automação Operacional',
+                    image: '/images/services/cloud-case-3.png',
+                    link: '#',
+                    type: 'white-paper'
+                }
+            ]
+        },
         features: [
-            'AWS / Azure / GCP',
-            'Kubernetes / Docker',
-            'Terraform / Pulumi',
-            'GitHub Actions / GitLab CI',
-            'Grafana / Prometheus',
-            'Segurança cloud-native',
+            'Assessment de Maturidade Cloud',
+            'Migração End-to-End AWS/Azure/GCP',
+            'Implementação de SRE e FinOps',
+            'Segurança Cloud-native Hardened',
+            'Arquiteturas de Micro-serviços',
+            'DevSecOps e CI/CD Automático',
         ],
         benefits: [
-            'Deploy automatizado',
-            'Escalabilidade elástica',
-            'Custos otimizados',
-            '99.9% uptime',
-            'Recuperação rápida',
-            'Segurança em camadas',
+            'Redução de até 35% em custos de infraestrutura',
+            'Time-to-market 4x mais rápido com pipelines',
+            'Escalabilidade global automática e elástica',
+            'Segurança e conformidade nível Enterprise',
+            'Maximização de performance e uptime 99.99%',
+            'Operação simplificada via Infrastructure as Code',
         ],
     },
     {

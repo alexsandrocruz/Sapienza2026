@@ -10,7 +10,7 @@ interface IDEAbookFrameworkProps {
     tabs: PMOFrameworkTab[];
 }
 
-export function IDEAbookFramework({ title, description, tabs }: IDEAbookFrameworkProps) {
+export default function IDEAbookFramework({ title, description, tabs }: IDEAbookFrameworkProps) {
     const [activeTab, setActiveTab] = useState(tabs[0]?.id || '');
     const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
@@ -57,8 +57,8 @@ export function IDEAbookFramework({ title, description, tabs }: IDEAbookFramewor
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`pb-6 text-xl font-bold transition-all relative ${activeTab === tab.id
-                                        ? 'text-gray-900'
-                                        : 'text-gray-400 hover:text-gray-600'
+                                    ? 'text-gray-900'
+                                    : 'text-gray-400 hover:text-gray-600'
                                     }`}
                             >
                                 {tab.label}

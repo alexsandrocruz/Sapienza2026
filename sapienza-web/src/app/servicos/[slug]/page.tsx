@@ -15,7 +15,10 @@ import {
     ServicesHub,
     BlogSection,
     IDEAbookFramework,
-    TrustLogos
+    TrustLogos,
+    CloudServiceLoop,
+    PartnerSuccess,
+    CloudBlogGrid,
 } from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
 
@@ -221,6 +224,12 @@ export default async function ServicePage({
                     </div>
                 </section>
             )}
+
+            {service.cloudLoop && <CloudServiceLoop data={service.cloudLoop} />}
+
+            {service.cloudPartners && <PartnerSuccess data={service.cloudPartners} />}
+
+            {service.cloudBlogArticles && <CloudBlogGrid data={service.cloudBlogArticles} />}
 
             {/* Benefits */}
             <section className="py-24 bg-[#0b0f19]">
