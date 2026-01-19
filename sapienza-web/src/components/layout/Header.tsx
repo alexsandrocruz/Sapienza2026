@@ -4,10 +4,20 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { serviceGroups, featuredServices } from '@/data/navigation';
 
+interface SubItem {
+    name: string;
+    href: string;
+    description?: string;
+    icon?: string;
+    comingSoon?: boolean;
+}
+
 interface NavItem {
     name: string;
     href: string;
     hasMegaMenu?: boolean;
+    hasDropdown?: boolean;
+    subItems?: SubItem[];
 }
 
 const navigation: NavItem[] = [
@@ -16,11 +26,39 @@ const navigation: NavItem[] = [
     { name: 'Sobre', href: '/sobre' },
     { name: 'Cases', href: '/cases' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Agendar', href: '/agendar' },
+    {
+        name: 'Comunidade',
+        href: '#',
+        hasDropdown: true,
+        subItems: [
+            {
+                name: 'Vagas',
+                href: '/vagas',
+                description: 'Junte-se ao time Sapienza',
+                icon: '💼'
+            },
+            {
+                name: 'Recursos',
+                href: '/recursos',
+                description: 'Materiais gratuitos e whitepapers',
+                icon: '📚'
+            },
+            {
+                name: 'Comunidades WhatsApp',
+                href: '#',
+                description: 'Grupos exclusivos de tecnologia',
+                icon: '💬',
+                comingSoon: true
+            },
+        ]
+    },
 ];
 
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+    const [communityDropdownOpen, setCommunityDropdownOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -43,7 +81,7 @@ export function Header() {
                         <span className={`text-2xl font-bold transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
                             Sapienza
                         </span>
-                        <span className="text-2xl font-bold text-orange-500"> Digital</span>
+                        <span className="text-2xl font-bold text-orange-500">Digital</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -52,8 +90,14 @@ export function Header() {
                             <div
                                 key={item.name}
                                 className="relative"
-                                onMouseEnter={() => item.hasMegaMenu && setMegaMenuOpen(true)}
-                                onMouseLeave={() => item.hasMegaMenu && setMegaMenuOpen(false)}
+                                onMouseEnter={() => {
+                                    if (item.hasMegaMenu) setMegaMenuOpen(true);
+                                    if (item.hasDropdown) setCommunityDropdownOpen(true);
+                                }}
+                                onMouseLeave={() => {
+                                    if (item.hasMegaMenu) setMegaMenuOpen(false);
+                                    if (item.hasDropdown) setCommunityDropdownOpen(false);
+                                }}
                             >
                                 <Link
                                     href={item.href}
@@ -61,8 +105,15 @@ export function Header() {
                                         }`}
                                 >
                                     {item.name}
-                                    {item.hasMegaMenu && (
-                                        <svg className={`w-4 h-4 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    {(item.hasMegaMenu || item.hasDropdown) && (
+                                        <svg
+                                            className={`w-4 h-4 transition-transform ${item.hasMegaMenu && megaMenuOpen ? 'rotate-180' : ''
+                                                } ${item.hasDropdown && communityDropdownOpen ? 'rotate-180' : ''
+                                                }`}
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     )}
@@ -146,6 +197,54 @@ export function Header() {
                                         </div>
                                     </div>
                                 )}
+
+                                {/* Simple Dropdown (Community) */}
+                                {item.hasDropdown && communityDropdownOpen && item.subItems && (
+                                    <div className="absolute top-full left-0 pt-2 w-80">
+                                        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6">
+                                            <div className="space-y-2">
+                                                {item.subItems.map((subItem) => (
+                                                    <Link
+                                                        key={subItem.name}
+                                                        href={subItem.href}
+                                                        className={`group block p-4 rounded-xl transition-all ${subItem.comingSoon
+                                                                ? 'opacity-60 cursor-not-allowed bg-gray-50'
+                                                                : 'hover:bg-orange-50'
+                                                            }`}
+                                                        onClick={(e) => {
+                                                            if (subItem.comingSoon) {
+                                                                e.preventDefault();
+                                                            } else {
+                                                                setCommunityDropdownOpen(false);
+                                                            }
+                                                        }}
+                                                    >
+                                                        <div className="flex items-start gap-3">
+                                                            <span className="text-2xl">{subItem.icon}</span>
+                                                            <div className="flex-1">
+                                                                <div className="flex items-center gap-2">
+                                                                    <h4 className="font-bold text-gray-900 group-hover:text-orange-500 transition-colors text-sm">
+                                                                        {subItem.name}
+                                                                    </h4>
+                                                                    {subItem.comingSoon && (
+                                                                        <span className="text-[10px] bg-blue-500 text-white px-2 py-0.5 rounded-full font-bold">
+                                                                            EM BREVE
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                                {subItem.description && (
+                                                                    <p className="text-gray-500 text-xs mt-1">
+                                                                        {subItem.description}
+                                                                    </p>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         ))}
                         <Link
@@ -208,6 +307,47 @@ export function Header() {
                                                     </div>
                                                 ))}
                                             </div>
+                                        </div>
+                                    ) : item.hasDropdown ? (
+                                        <div className="py-2">
+                                            <span className="font-bold text-gray-900 text-lg">{item.name}</span>
+                                            <ul className="mt-3 pl-6 space-y-3">
+                                                {item.subItems?.map((subItem) => (
+                                                    <li key={subItem.name}>
+                                                        <Link
+                                                            href={subItem.href}
+                                                            className={`flex items-center gap-2 ${subItem.comingSoon
+                                                                    ? 'opacity-60 cursor-not-allowed text-gray-400'
+                                                                    : 'text-gray-700 hover:text-orange-500'
+                                                                }`}
+                                                            onClick={(e) => {
+                                                                if (subItem.comingSoon) {
+                                                                    e.preventDefault();
+                                                                } else {
+                                                                    setMobileMenuOpen(false);
+                                                                }
+                                                            }}
+                                                        >
+                                                            <span>{subItem.icon}</span>
+                                                            <div className="flex-1">
+                                                                <div className="flex items-center gap-2">
+                                                                    <span className="font-medium">{subItem.name}</span>
+                                                                    {subItem.comingSoon && (
+                                                                        <span className="text-[9px] bg-blue-500 text-white px-1.5 py-0.5 rounded-full font-bold">
+                                                                            EM BREVE
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                                {subItem.description && (
+                                                                    <p className="text-xs text-gray-500 mt-0.5">
+                                                                        {subItem.description}
+                                                                    </p>
+                                                                )}
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                     ) : (
                                         <Link

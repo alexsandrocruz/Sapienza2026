@@ -38,3 +38,4 @@ export { default as BlogCard } from './BlogCard';
 export { default as ServiceHero } from './ServiceHero';
 export { default as PricingSection } from './PricingSection';
 export { default as ServiceFeatures } from './ServiceFeatures';
+export { MeetingCard } from './MeetingCard';
