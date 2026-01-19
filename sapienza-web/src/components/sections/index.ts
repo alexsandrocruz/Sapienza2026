@@ -35,3 +35,6 @@ export { default as HowWeWork } from './HowWeWork';
 export { default as BlogHero } from './BlogHero';
 export { default as BlogFilters } from './BlogFilters';
 export { default as BlogCard } from './BlogCard';
+export { default as ServiceHero } from './ServiceHero';
+export { default as PricingSection } from './PricingSection';
+export { default as ServiceFeatures } from './ServiceFeatures';

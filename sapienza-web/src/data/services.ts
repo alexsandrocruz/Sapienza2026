@@ -33,6 +33,7 @@ export interface ServiceHubItem {
     description: string;
     link?: string;
     icon?: string;
+    pricing?: string;
 }
 
 export interface PMOFrameworkTab {
@@ -157,9 +158,87 @@ export interface ServiceData {
             icon: string;
         }[];
     };
+    pricing?: {
+        title: string;
+        plans: {
+            name: string;
+            price: string;
+            period: string;
+            description: string;
+            features: string[];
+            cta: string;
+            highlighted?: boolean;
+        }[];
+    };
 }
 
 export const servicesData: ServiceData[] = [
+    {
+        slug: 'transformacao-digital',
+        badge: 'Digital Strategy',
+        title: 'Transformação Digital',
+        subtitle: 'Modernizar. Mobilizar. Melhorar.',
+        heroDescription: 'Um ambiente perfeito e satisfatório de Experiência Digital é o fator crítico do engajamento, fidelidade e retenção do cliente. Como agência de transformação digital, simplificamos a evolução e aceleramos os recursos de dimensionamento modernizando suas operações.',
+        heroImage: '/images/services/digital-trans-hero.png',
+        sections: [
+            {
+                title: 'Digitalização',
+                description: 'No centro da transformação digital bem-sucedida está a digitalização inovadora. Nossa profunda experiência no fornecimento de serviços avançados ajuda você a organizar e ativar melhores processos.',
+            },
+            {
+                title: 'Design de experiência digital',
+                description: 'Em vez de desenvolver um MVP com base em preferências presumidas, a SAPIENZA investiga o que os usuários desejam diretamente, garantindo um produto viável e envolvente.',
+            },
+            {
+                title: 'Evolução orientada por dados',
+                description: 'Transforme a riqueza de informações sobre seus clientes em potentes oportunidades de negócios com soluções que proporcionam insights acionáveis em tempo real.',
+            },
+            {
+                title: 'Modernização de TI legada',
+                description: 'Reengenharia de sistemas e processos para maximizar a eficiência e inovação, minimizando riscos através de abordagens ágeis e DevOps.',
+            },
+            {
+                title: 'Serviços em nuvem',
+                description: 'Fornecemos insights, estratégia e engenharia para gerenciamento abrangente de operações em nuvem, garantindo transição ininterrupta e implementação segura.',
+            },
+        ],
+        successCases: [
+            {
+                client: 'Plataforma Educacional Fundamental1e2',
+                description: 'Desenvolvimento de MVP em tempo recorde para plataforma educacional robusta e intuitiva, focado em alunos e professores.',
+                image: '/images/cases/edu-platform.png',
+                metrics: ['Lançamento acelerado', 'Validação em ambiente real', 'Feedback positivo de usuários'],
+            },
+            {
+                client: 'Gestão de Equipes Externas',
+                description: 'Plataforma de rastreamento com monitoramento em tempo real, comunicação instantânea e relatórios de desempenho estratégico.',
+                image: '/images/cases/team-tracking.png',
+                metrics: ['Visibilidade 360º', 'Aumento de eficiência operacional', 'Dados para decisão em tempo real'],
+            },
+            {
+                client: 'Fintech de Investimentos',
+                description: 'Aplicativo para gestão de investimentos e rendimentos mensais, com controle para franqueados e transparência total.',
+                image: '/images/cases/fintech-app.png',
+                metrics: ['Transparência para investidores', 'Controle eficiente de franquias', 'Gestão simples de aportes/retiradas'],
+            },
+        ],
+        features: [
+            'Consultoria Estratégica Completa',
+            'Ecosystem Thinking',
+            'Modernização Cloud-native',
+            'Business Intelligence Avançado',
+            'Design Thinking & UX',
+            'Agilidade Enterprise',
+        ],
+        benefits: [
+            'Aceleração da maturidade digital',
+            'Novos fluxos de receita digital',
+            'Eficiência operacional maximizada',
+            'Experiência do cliente reinventada',
+            'Decisões baseadas em evidências',
+            'Redução de riscos tecnológicos',
+        ],
+    },
     {
         slug: 'desenvolvimento-de-software',
         badge: 'Software Engineering',
@@ -602,6 +681,7 @@ export const servicesData: ServiceData[] = [
         title: 'WhatsApp Chatbot',
         subtitle: 'Automatize o atendimento da sua empresa no WhatsApp',
         heroDescription: 'Conte com o Sapienz ChatBot™ para criar chatbot no WhatsApp e principais canais! Automatize com segurança usando API Oficial do WhatsApp.',
+        heroImage: '/images/services/chatbot-hero.png',
         sections: [
             {
                 title: 'Fluxos de Conversa Visuais',
@@ -620,6 +700,51 @@ export const servicesData: ServiceData[] = [
                 description: 'Integra o atendimento automatizado com assistência humana, garantindo que um atendente assuma a conversa apenas quando necessário.',
             },
         ],
+        pricing: {
+            title: 'Preços adequados para empresas de todos os portes',
+            plans: [
+                {
+                    name: 'Iniciante',
+                    price: 'R$ 1449',
+                    period: 'mês',
+                    description: 'Agilize atendimentos e crie estratégias de vendas',
+                    features: [
+                        'Até 10 atendentes',
+                        'Até 2000 conversas/mês',
+                        'Todos os recursos do Sapienz ChatBot',
+                        'Suporte por Email'
+                    ],
+                    cta: 'Fale com a gente'
+                },
+                {
+                    name: 'Profissional',
+                    price: 'R$ 2995',
+                    period: 'mês',
+                    description: 'Integre equipes robustas, ferramentas e dados',
+                    features: [
+                        'Até 50 atendentes',
+                        'Até 5000 conversas/mês',
+                        'Todos os recursos do Sapienz ChatBot',
+                        'Suporte de e-mail e telefone'
+                    ],
+                    cta: 'Fale com a gente',
+                    highlighted: true
+                },
+                {
+                    name: 'Especialista',
+                    price: 'Sob consulta',
+                    period: 'mês',
+                    description: 'Grande volume de conversas, sob medida para sua empresa',
+                    features: [
+                        'Atendentes ilimitados',
+                        'Conversas sob demanda',
+                        'Personalização ilimitada',
+                        'Suporte gratuito 24x7'
+                    ],
+                    cta: 'Falar com Especialista'
+                }
+            ]
+        },
         features: [
             'API Oficial WhatsApp Business',
             'Fluxos personalizados',
