@@ -1,87 +1,137 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const projects = [
     {
         title: 'Fundamental1e2',
-        description: 'Desenvolvimento do MVP da plataforma educacional. Solução robusta e intuitiva que atende às necessidades de alunos e professores do ensino fundamental.',
+        description: 'Arquitetura e desenvolvimento do ecossistema educacional MVP, focado em escalabilidade e UX intuitiva para o ensino fundamental.',
         category: 'EdTech',
-        result: 'MVP entregue rapidamente, validado em ambiente real',
+        result: 'MVP VALIDADO EM AMBIENTE REAL',
         image: '/images/hero-team.png',
+        stats: { coverage: '100%', time: '3 meses' }
     },
     {
         title: 'Rastreio de Equipes',
-        description: 'Plataforma de rastreamento de equipes externas com monitoramento em tempo real, comunicação instantânea e relatórios de desempenho.',
+        description: 'Orquestração de dados em tempo real para monitoramento e gestão de frotas críticas com dashboards analíticos avançados.',
         category: 'Enterprise',
-        result: 'Visibilidade total das equipes em campo',
+        result: 'VISIBILIDADE TOTAL DE OPERAÇÕES',
         image: '/images/hero-analytics.png',
+        stats: { uptime: '99.9%', latency: '40ms' }
     },
     {
         title: 'Gestão de Investimentos',
-        description: 'Aplicativo financeiro facilitando captação de investimentos, pagamento de rendimentos e controle para unidades franqueadas.',
+        description: 'Plataforma FinTech segura para captação, rendimentos e governança financeira de unidades franqueadas em larga escala.',
         category: 'FinTech',
-        result: 'Transparência e praticidade para investidores',
+        result: 'GOVERNANÇA E CONTROLE ABSOLUTO',
         image: '/images/hero-mobile.png',
+        stats: { security: 'Grade A', volume: 'R$ 10M+' }
     },
 ];
 
 export function Portfolio() {
     return (
-        <section id="portfolio" className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase mb-4">
-                        Histórias de Sucesso
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Cases que <span className="text-orange-500">Inspiram</span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Conheça alguns dos projetos que desenvolvemos para nossos clientes
-                    </p>
+        <section id="portfolio" className="py-32 bg-[#020617] relative overflow-hidden">
+            {/* Ambient Lighting */}
+            <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[160px] pointer-events-none" />
+            <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-[160px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="text-center mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-6"
+                    >
+                        <span className="inline-block text-orange-500 font-black text-[10px] tracking-[0.5em] uppercase">
+                            Success Stories • Showcase
+                        </span>
+                        <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight">
+                            Impacto que <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Transforma</span>
+                        </h2>
+                        <p className="text-xl text-gray-500 max-w-3xl mx-auto font-light leading-relaxed">
+                            Convergência entre engenharia de precisão e visão de negócio para entregar resultados exponenciais.
+                        </p>
+                    </motion.div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {projects.map((project) => (
-                        <div
+                <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+                    {projects.map((project, idx) => (
+                        <motion.div
                             key={project.title}
-                            className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1 }}
+                            viewport={{ once: true }}
+                            className="group relative flex flex-col bg-zinc-900/20 rounded-[48px] overflow-hidden border border-white/5 hover:border-orange-500/40 transition-all duration-700 shadow-3xl"
                         >
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-72 overflow-hidden">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="object-cover transition-all duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-1 mix-blend-luminosity grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                <span className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80" />
+
+                                <span className="absolute top-8 left-8 bg-zinc-950/40 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest">
                                     {project.category}
                                 </span>
                             </div>
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-500 transition-colors">
-                                    {project.title}
-                                </h3>
-                                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                                    {project.description}
-                                </p>
-                                <div className="flex items-center gap-2 text-orange-500 text-sm font-medium">
-                                    <span>✓</span>
-                                    <span>{project.result}</span>
+
+                            <div className="p-10 flex flex-col flex-grow space-y-8">
+                                <div className="space-y-4">
+                                    <h3 className="text-3xl font-bold text-white tracking-tight group-hover:text-orange-400 transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-gray-500 text-sm leading-relaxed font-light group-hover:text-gray-300 transition-colors">
+                                        {project.description}
+                                    </p>
+                                </div>
+
+                                <div className="mt-auto space-y-6">
+                                    <div className="flex items-center gap-4 p-5 rounded-3xl bg-white/5 border border-white/5 group-hover:bg-orange-500/5 group-hover:border-orange-500/20 transition-all duration-500">
+                                        <div className="w-10 h-10 rounded-full bg-orange-600/20 flex items-center justify-center text-orange-500">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                                            RESULTADO: <br />
+                                            <span className="text-white text-xs">{project.result}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between text-white/40 group-hover:text-orange-500 transition-colors pt-2">
+                                        <span className="text-[10px] font-mono uppercase tracking-widest">Case_Study_v.2026</span>
+                                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-orange-500 group-hover:rotate-45 transition-all">
+                                            ↗
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className="text-center mt-12">
-                    <Link
-                        href="/cases"
-                        className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors"
+                <div className="text-center mt-24">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
                     >
-                        Ver Todos os Cases <span>→</span>
-                    </Link>
+                        <Link
+                            href="/cases"
+                            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black rounded-[24px] font-black text-sm uppercase tracking-widest hover:bg-orange-600 hover:text-white transition-all duration-500 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-orange-900/60 overflow-hidden"
+                        >
+                            <span className="relative z-10">Explorar Portfólio</span>
+                            <span className="relative z-10 text-xl group-hover:translate-x-2 transition-transform">→</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
         </section>

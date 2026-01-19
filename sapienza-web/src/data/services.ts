@@ -119,6 +119,44 @@ export interface ServiceData {
         metrics: string[];
         image?: string;
     }[];
+    modernizationTwoSpeed?: {
+        title: string;
+        subtitle: string;
+        cycles: {
+            id: string;
+            label: string;
+            value: string;
+            items: string[];
+        }[];
+    };
+    modernizationRocket?: {
+        title: string;
+        phases: {
+            id: string;
+            label: string;
+            description: string;
+            color: string;
+        }[];
+    };
+    modernizationServicesGrid?: {
+        title: string;
+        description: string;
+        items: {
+            title: string;
+            description: string;
+            image: string;
+        }[];
+    };
+    modernizationResults?: {
+        title: string;
+        items: {
+            metric: string;
+            description: string;
+            linkText: string;
+            link: string;
+            icon: string;
+        }[];
+    };
 }
 
 export const servicesData: ServiceData[] = [
@@ -394,21 +432,21 @@ export const servicesData: ServiceData[] = [
                 {
                     metric: '70+ novos datasets',
                     description: 'Disponibilizados a partir de um sistema baseado em mainframe para melhor gestão de inventário e analytics de PDV.',
-                    linkText: 'Ler case study',
+                    linkText: 'Ler estudo de caso',
                     link: '#',
                     icon: 'cloud'
                 },
                 {
                     metric: '30% redução de custos',
                     description: 'Após migrar 60+ aplicações BSS para um ambiente multi-cloud, reduzindo pela metade o time-to-market.',
-                    linkText: 'Ler case study',
+                    linkText: 'Ler estudo de caso',
                     link: '#',
                     icon: 'chart'
                 },
                 {
                     metric: '50% menores custos de manutenção',
                     description: 'Após migrar para uma arquitetura de microsserviços para um grande player de varejo.',
-                    linkText: 'Ler case study',
+                    linkText: 'Ler estudo de caso',
                     link: '#',
                     icon: 'cpu'
                 }

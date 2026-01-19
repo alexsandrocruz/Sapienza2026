@@ -3,12 +3,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 export function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isLoaded, setIsLoaded] = useState(false);
     const heroRef = useRef<HTMLElement>(null);
+    const { scrollY } = useScroll();
+
+    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const scale = useTransform(scrollY, [0, 300], [1, 1.05]);
 
     useEffect(() => {
+        setIsLoaded(true);
         const handleMouseMove = (e: MouseEvent) => {
             if (heroRef.current) {
                 const rect = heroRef.current.getBoundingClientRect();
@@ -22,168 +30,270 @@ export function Hero() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Floating animation keyframes
-    const floatStyle = `
-    @keyframes float1 {
-      0%, 100% { transform: translateY(0px) rotate(-5deg); }
-      50% { transform: translateY(-20px) rotate(-3deg); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0px) rotate(3deg); }
-      50% { transform: translateY(-15px) rotate(5deg); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translateY(0px) rotate(-3deg); }
-      50% { transform: translateY(-25px) rotate(-5deg); }
-    }
-  `;
-
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden"
+            className="relative min-h-[100vh] lg:min-h-screen bg-[#020617] overflow-hidden flex items-center"
         >
-            <style jsx>{floatStyle}</style>
+            {/* Immersive Background Layer */}
+            <div className="absolute inset-0 z-0">
+                {/* Animated Mesh Gradient */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1),rgba(2,6,23,1))]" />
 
-            {/* Background effects */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/20 rounded-full blur-[120px]" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px]" />
+                {/* Moving Glows */}
+                <motion.div
+                    animate={{
+                        x: [0, 100, 0],
+                        y: [0, -50, 0],
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[140px]"
+                />
+                <motion.div
+                    animate={{
+                        x: [0, -80, 0],
+                        y: [0, 120, 0],
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"
+                />
 
-            {/* Decorative circles */}
-            <div className="absolute top-1/4 right-1/3 w-32 h-32 border border-orange-500/30 rounded-full" />
-            <div className="absolute bottom-1/3 left-1/4 w-24 h-24 border border-orange-500/20 rounded-full" />
-            <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-orange-500/20 rounded-full" />
+                {/* Cyber Grid */}
+                <div
+                    className="absolute inset-0 opacity-[0.2]"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '80px 80px',
+                        maskImage: 'radial-gradient(circle at 50% 50%, black, transparent 80%)'
+                    }}
+                />
 
-            {/* Grid pattern */}
-            <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px)',
-                    backgroundSize: '50px 50px',
-                }}
-            />
+                {/* Scanning Light Effect */}
+                <motion.div
+                    animate={{
+                        top: ['-20%', '120%']
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="absolute left-0 right-0 h-[300px] bg-gradient-to-b from-transparent via-orange-500/5 to-transparent pointer-events-none z-0"
+                />
+            </div>
 
-            <div className="relative container mx-auto px-6 pt-32 pb-20">
-                <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)]">
-                    {/* Text Content */}
-                    <div className="space-y-8 z-10">
-                        <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase border border-orange-500/30 px-4 py-2 rounded-full">
-                            Desenvolvimento de Software Personalizado
-                        </span>
+            <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+                    {/* Left: Narrative & CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="space-y-12"
+                    >
+                        <div className="space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl"
+                            >
+                                <span className="flex h-2 w-2 relative">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+                                </span>
+                                <span className="text-orange-400 font-bold text-[10px] uppercase tracking-[0.3em]">Sapienza 2026 • Enterprise Grade</span>
+                            </motion.div>
 
-                        <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-                            Projetamos, construímos<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                                e modernizamos
-                            </span>
-                            <br />aplicativos de software
-                        </h1>
+                            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[0.95] tracking-tight">
+                                <span className="block">Arquitetando o</span>
+                                <span className="relative inline-block mt-2">
+                                    <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 animate-gradient-x drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                                        Futuro Digital
+                                    </span>
+                                    <motion.div
+                                        className="absolute -bottom-2 left-0 h-1 bg-orange-500/30"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: '100%' }}
+                                        transition={{ delay: 1.2, duration: 1.5 }}
+                                    />
+                                </span>
+                            </h1>
 
-                        <p className="text-gray-300 text-lg lg:text-xl max-w-xl leading-relaxed">
-                            Envolva a SAPIENZA para criar uma equipe de desenvolvimento ágil para cocriar ou atualizar seus produtos ou plataformas digitais com as mais recentes tecnologias web, móveis e de nuvem.
-                        </p>
+                            <p className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed font-light">
+                                Fundindo <span className="text-white font-medium">engenharia de precisão</span> com
+                                <span className="text-white font-medium"> inteligência artificial </span>
+                                para construir ecossistemas digitais que não apenas funcionam, mas lideram mercados.
+                            </p>
+                        </div>
 
-                        <div className="flex flex-wrap gap-4 pt-4">
+                        <div className="flex flex-wrap gap-6 items-center">
                             <Link
                                 href="/contato"
-                                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105"
+                                className="group relative px-10 py-5 bg-orange-600 text-white rounded-2xl font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(234,88,12,0.3)]"
                             >
-                                Começar Projeto
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Iniciar Transformação
+                                    <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                                </span>
+                                <motion.div
+                                    className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                />
                             </Link>
+
                             <Link
                                 href="/cases"
-                                className="border-2 border-white/20 hover:border-orange-500 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:bg-orange-500/10"
+                                className="px-10 py-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-bold transition-all backdrop-blur-md flex items-center gap-2 group"
                             >
-                                Ver Portfolio
+                                Ver Roadmap
+                                <span className="opacity-50 group-hover:opacity-100 transition-opacity">↗</span>
                             </Link>
                         </div>
 
-                        {/* Stats */}
-                        <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
-                            <div>
-                                <div className="text-4xl font-bold text-white mb-1">150+</div>
-                                <div className="text-gray-400 text-sm">Projetos Entregues</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-white mb-1">98%</div>
-                                <div className="text-gray-400 text-sm">Satisfação</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-white mb-1">12+</div>
-                                <div className="text-gray-400 text-sm">Anos Experiência</div>
-                            </div>
+                        {/* Social Proof / Stats */}
+                        <div className="grid grid-cols-3 gap-8 pt-10 border-t border-white/10">
+                            {[
+                                { val: '150+', label: 'Projetos' },
+                                { val: '20+', label: 'Anos Core' },
+                                { val: '10x', label: 'ROI em GenAI' },
+                            ].map((stat, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8 + i * 0.1 }}
+                                >
+                                    <div className="text-2xl md:text-3xl font-black text-white mb-1">{stat.val}</div>
+                                    <div className="text-gray-500 text-[10px] uppercase tracking-[0.2em] font-medium">{stat.label}</div>
+                                </motion.div>
+                            ))}
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Floating Images - Efeito líquido com deslocamento suave */}
-                    <div className="relative h-[600px] hidden lg:block">
-                        {/* Image 1 - Top Right - Analytics - Move para direita e cima ao passar mouse */}
-                        <div
-                            className="absolute top-0 right-0 w-[220px] h-[280px] rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/20 cursor-pointer transition-transform duration-700 ease-out"
-                            style={{
-                                animation: 'float1 6s ease-in-out infinite',
-                                transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 20}px) rotate(${-5 + mousePosition.x * 3}deg)`,
+                    {/* Right: Interactive 3D/Glass Interface */}
+                    <motion.div
+                        style={{ y: y1, opacity, scale }}
+                        className="relative h-[600px] lg:h-[700px] flex items-center justify-center pointer-events-none lg:pointer-events-auto"
+                    >
+                        {/* Central Hub Card */}
+                        <motion.div
+                            animate={{
+                                y: [0, -15, 0],
+                                rotateZ: [-0.5, 0.5, -0.5],
                             }}
+                            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                            className="relative z-20 w-full max-w-[440px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] bg-zinc-950/40 backdrop-blur-3xl"
                         >
-                            <Image src="/images/hero-analytics.png" alt="Data Analytics" fill className="object-cover" priority />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        </div>
+                            <div className="absolute inset-0">
+                                <Image
+                                    src="/images/hero-team.png"
+                                    alt="Sapienza Hub"
+                                    fill
+                                    className="object-cover opacity-40 mix-blend-luminosity grayscale hover:grayscale-0 transition-all duration-1000"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent" />
+                            </div>
 
-                        {/* Image 2 - Center - Team - Move na direção oposta ao mouse */}
-                        <div
-                            className="absolute top-1/3 left-1/4 w-[200px] h-[260px] rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/20 cursor-pointer transition-transform duration-500 ease-out z-10"
-                            style={{
-                                animation: 'float2 5s ease-in-out infinite 0.5s',
-                                transform: `translate(${mousePosition.x * -40}px, ${mousePosition.y * -30}px) rotate(${3 + mousePosition.y * 4}deg)`,
-                            }}
-                        >
-                            <Image src="/images/hero-team.png" alt="Equipe Sapienza" fill className="object-cover" priority />
-                            <div className="absolute inset-0 bg-gradient-to-t from-orange-500/30 to-transparent" />
-                        </div>
+                            {/* HUD Overlays */}
+                            <div className="absolute inset-0 p-10 flex flex-col justify-between">
+                                <div className="flex justify-between items-start">
+                                    <div className="space-y-1">
+                                        <div className="h-0.5 w-8 bg-orange-500" />
+                                        <span className="text-[10px] font-mono text-orange-500/80">SAPIENZA_CORE_v26</span>
+                                    </div>
+                                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
+                                        <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                                    </div>
+                                </div>
 
-                        {/* Image 3 - Bottom Right - Mobile - Move diagonal com efeito mais lento */}
-                        <div
-                            className="absolute bottom-10 right-10 w-[240px] h-[320px] rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/20 cursor-pointer transition-transform duration-1000 ease-out"
-                            style={{
-                                animation: 'float3 7s ease-in-out infinite 1s',
-                                transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * -35}px) rotate(${-3 + mousePosition.x * -2}deg) skewY(${mousePosition.y * 2}deg)`,
-                            }}
-                        >
-                            <Image src="/images/hero-mobile.png" alt="Mobile Apps" fill className="object-cover" priority />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                                <div className="space-y-6">
+                                    <h3 className="text-3xl font-bold text-white leading-tight">Orquestração Digital <br />de Alta Performance</h3>
 
-                            {/* Floating badge */}
-                            <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 shadow-xl">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-sm">🏆</div>
-                                    <div>
-                                        <div className="text-white font-bold text-xs">Top Rated</div>
-                                        <div className="text-gray-300 text-[10px]">Digital Agency</div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="p-4 bg-white/5 border border-white/10 rounded-3xl space-y-2">
+                                            <div className="text-[10px] text-gray-400 font-mono">LATENCY</div>
+                                            <div className="text-xl font-bold text-emerald-400">12ms</div>
+                                        </div>
+                                        <div className="p-4 bg-white/5 border border-white/10 rounded-3xl space-y-2">
+                                            <div className="text-[10px] text-gray-400 font-mono">UPTIME</div>
+                                            <div className="text-xl font-bold text-blue-400">99.99%</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        {/* Decorative S icon - também reage ao mouse */}
-                        <div
-                            className="absolute top-1/4 left-1/2 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300"
-                            style={{
-                                transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -10}px)`,
+                        {/* Floating Satellite: Analytics */}
+                        <motion.div
+                            animate={{
+                                y: [10, -10, 10],
+                                x: [5, -5, 5],
                             }}
+                            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+                            style={{
+                                x: mousePosition.x * 30,
+                                y: mousePosition.y * 20
+                            }}
+                            className="absolute -top-12 -right-4 w-[240px] h-[180px] rounded-3xl overflow-hidden border border-white/10 shadow-3xl z-30 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
                         >
-                            <span className="text-orange-500 text-2xl font-bold">S</span>
+                            <Image src="/images/hero-analytics.png" alt="Intelligence" fill className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
+                            <div className="absolute inset-0 p-4 bg-gradient-to-t from-zinc-950/80 to-transparent flex flex-col justify-end">
+                                <span className="text-[10px] font-bold text-orange-400">AI INSIGHTS</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Floating Satellite: Code/Process */}
+                        <motion.div
+                            animate={{
+                                y: [-15, 15, -15],
+                                x: [-8, 8, -8],
+                            }}
+                            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 0.5 }}
+                            style={{
+                                x: mousePosition.x * -40,
+                                y: mousePosition.y * -30
+                            }}
+                            className="absolute -bottom-16 -left-8 w-[260px] h-[320px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl z-10 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
+                        >
+                            <Image src="/images/hero-mobile.png" alt="Experience" fill className="object-cover opacity-50 mix-blend-screen" />
+                            <div className="absolute inset-0 p-6 bg-gradient-to-t from-zinc-950/90 to-transparent flex flex-col justify-end gap-3">
+                                <div className="space-y-1">
+                                    <div className="h-0.5 w-6 bg-blue-500" />
+                                    <p className="text-xs text-white font-medium uppercase tracking-wider">Multi-Device Synthesis</p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Decorative Circles */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-[120%] h-[120%] border border-orange-500/5 rounded-full" />
+                            <div className="w-[140%] h-[140%] border border-blue-500/5 rounded-full" />
                         </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Cinematic Scroll Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.5, duration: 1 }}
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
+            >
+                <div className="flex flex-col items-center gap-2">
+                    <span className="text-[9px] text-gray-500 uppercase tracking-[0.6em] font-medium ml-2">Explorar</span>
+                    <div className="w-[1px] h-20 bg-gradient-to-b from-orange-500 to-transparent relative overflow-hidden">
+                        <motion.div
+                            animate={{ y: [0, 80] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                            className="absolute top-0 left-0 w-full h-[30%] bg-orange-200 blur-[1px]"
+                        />
                     </div>
                 </div>
-            </div>
-
-            {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-                <span className="text-gray-400 text-xs uppercase tracking-wider">Scroll</span>
-                <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-orange-500 rounded-full" />
-                </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

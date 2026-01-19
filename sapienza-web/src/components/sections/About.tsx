@@ -1,103 +1,133 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export function About() {
     const highlights = [
         {
-            icon: '🏆',
-            title: 'Duas Décadas de Experiência',
-            description: 'Mais de 20 anos criando soluções de software personalizadas para todos os orçamentos e nichos',
+            icon: '🎯',
+            title: 'Engenharia de Precisão',
+            description: 'Mais de 20 anos transformando conceitos complexos em arquiteturas de software resilientes e escaláveis.',
         },
         {
-            icon: '👥',
-            title: 'Equipe Full-Stack Expert',
-            description: 'Programadores, administradores de servidores e designers de experiência digital com vasta experiência',
+            icon: '🤝',
+            title: 'Cultura de Cocriação',
+            description: 'Não apenas entregamos código; fundimos nossa expertise com sua visão para orquestrar o sucesso digital.',
         },
         {
-            icon: '💡',
-            title: 'Abordagem Centrada no Usuário',
-            description: 'Garantimos que cada aplicativo funcione perfeitamente e seja uma alegria de usar',
+            icon: '⚡',
+            title: 'Modernização Habilitada por IA',
+            description: 'Aceleramos o ciclo de vida do software utilizando inteligência artificial generativa em cada etapa.',
         },
     ];
 
     return (
-        <section id="about" className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Image */}
-                    <div className="relative">
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+        <section id="about" className="py-32 bg-[#020617] relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-orange-600/5 rounded-full blur-[120px]" />
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    {/* Left: Premium Image/Visual Layer */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="relative"
+                    >
+                        <div className="relative h-[600px] rounded-[40px] overflow-hidden border border-white/10 shadow-2xl">
                             <Image
                                 src="/images/hero-team.png"
-                                alt="Equipe Sapienza"
+                                alt="Sapienza Co-creation"
                                 fill
-                                className="object-cover"
+                                className="object-cover opacity-60 mix-blend-luminosity grayscale hover:grayscale-0 transition-all duration-1000"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent" />
                         </div>
-                        {/* Floating card */}
-                        <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-xl hidden lg:block">
-                            <div className="flex items-center gap-4">
-                                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center">
-                                    <span className="text-3xl text-white font-bold">20+</span>
+
+                        {/* Floating Experience Card */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="absolute -bottom-10 -right-6 lg:-right-10 bg-zinc-900/40 backdrop-blur-3xl p-8 rounded-3xl border border-white/10 shadow-3xl hidden sm:block max-w-[280px]"
+                        >
+                            <div className="flex items-center gap-6 mb-4">
+                                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-900/40">
+                                    <span className="text-3xl text-white font-black">20+</span>
                                 </div>
-                                <div>
-                                    <div className="text-2xl font-bold text-gray-900">Anos</div>
-                                    <div className="text-gray-600">de Experiência</div>
-                                </div>
+                                <div className="h-10 w-[1px] bg-white/10" />
+                                <div className="text-gray-400 text-xs font-mono uppercase tracking-widest leading-tight">Anos de <br />Engenharia Core</div>
                             </div>
-                        </div>
-                    </div>
+                            <p className="text-gray-400 text-sm leading-relaxed italic">
+                                "Nossa história é escrita com o sucesso escalável de nossos parceiros."
+                            </p>
+                        </motion.div>
+                    </motion.div>
 
-                    {/* Content */}
-                    <div>
-                        <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase mb-4">
-                            Sobre a SAPIENZA
-                        </span>
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                            Uma empresa de desenvolvimento de software <span className="text-orange-500">personalizado full service</span>
-                        </h2>
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            Na era digital de hoje, os consumidores esperam interações perfeitas com suas marcas favoritas
-                            em vários dispositivos. Na SAPIENZA, entendemos esse cenário dinâmico e oferecemos uma gama
-                            de serviços, incluindo desenvolvimento de produtos, plataformas e outras soluções personalizadas.
-                        </p>
-                        <p className="text-gray-600 mb-8 leading-relaxed">
-                            Nossa equipe se destaca na criação de aplicativos web, aplicativos móveis, aplicativos de
-                            comércio eletrônico, plataformas de experiência digital e plataformas SaaS. Garantimos que
-                            cada aplicativo não apenas funcione perfeitamente, mas também forneça uma experiência de
-                            usuário agradável.
-                        </p>
+                    {/* Right: Narrative Content */}
+                    <div className="space-y-10">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="inline-block text-orange-500 font-bold text-xs tracking-[0.4em] uppercase mb-4">
+                                A Força por trás da Sapienza
+                            </span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-[1.1] tracking-tight">
+                                Orquestrando a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 drop-shadow-sm">Transformação</span>
+                            </h2>
+                            <p className="text-xl text-gray-400 leading-relaxed font-light">
+                                Na Sapienza, acreditamos que o software de classe mundial nasce da interseção entre
+                                <span className="text-white font-medium"> engenharia de rigor absoluto </span>
+                                e <span className="text-white font-medium"> parcerias estratégicas baseadas em confiança</span>.
+                            </p>
+                        </motion.div>
 
-                        {/* Highlights */}
-                        <div className="space-y-6">
-                            {highlights.map((item) => (
-                                <div key={item.title} className="flex gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-2xl">
+                        {/* Highlights Grid */}
+                        <div className="grid gap-8">
+                            {highlights.map((item, idx) => (
+                                <motion.div
+                                    key={item.title}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="group flex gap-6 p-6 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-500"
+                                >
+                                    <div className="flex-shrink-0 w-14 h-14 bg-zinc-900 border border-white/5 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500">
                                         {item.icon}
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">{item.title}</h4>
-                                        <p className="text-gray-600 text-sm">{item.description}</p>
+                                    <div className="space-y-2">
+                                        <h4 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">{item.title}</h4>
+                                        <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors">{item.description}</p>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
 
-                        <div className="flex gap-4 mt-8">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="flex flex-wrap gap-6 pt-6"
+                        >
                             <Link
                                 href="/sobre"
-                                className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+                                className="group inline-flex items-center gap-3 text-white font-bold text-sm tracking-widest uppercase hover:text-orange-500 transition-colors"
                             >
-                                Conheça Nossa Equipe <span>→</span>
+                                Nossa Jornada <span className="text-2xl group-hover:translate-x-2 transition-transform">→</span>
                             </Link>
                             <Link
                                 href="/contato"
-                                className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+                                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-2xl font-bold transition-all backdrop-blur-md"
                             >
-                                Solicite uma Cotação
+                                Solicitar Diagnóstico
                             </Link>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

@@ -157,10 +157,9 @@ export default async function ServicePage({
 
             {/* Trust Logos (Companies that trust us) */}
             <TrustLogos logos={[
-                { name: 'Global Retailer', image: '/images/clients/dkv.png' },
-                { name: 'Swiss FinTech', image: '/images/clients/swissquote.png' },
-                { name: 'Telecom Giant', image: '/images/clients/swisscom.png' },
-                { name: 'E-commerce Leader', image: '/images/clients/omio.png' },
+                { name: 'AWS', image: '/images/partners/aws-logo.svg' },
+                { name: 'Azure', image: '/images/partners/azure-logo.svg' },
+                { name: 'Google Cloud', image: '/images/partners/gcp-logo.svg' },
             ]} />
 
             {/* Services Hub Section */}
