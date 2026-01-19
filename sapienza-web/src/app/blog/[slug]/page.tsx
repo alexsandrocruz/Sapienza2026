@@ -101,43 +101,46 @@ export default async function BlogPostPage({
             </header>
 
             {/* Article Content Area */}
-            <section className="relative -mt-32 pb-24 px-6 z-20">
+            <section className="relative -mt-32 pb-32 px-6 z-20">
                 <div className="max-w-5xl mx-auto">
-                    {/* Main Image */}
-                    <div className="relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 mb-16">
-                        <Image
-                            src={post.image}
-                            alt={post.title}
-                            fill
-                            className="object-cover"
-                        />
+                    {/* Main Image with decorative glow */}
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                        <div className="relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 mb-16">
+                            <Image
+                                src={post.image}
+                                alt={post.title}
+                                fill
+                                className="object-cover transition duration-700 group-hover:scale-105"
+                            />
+                        </div>
                     </div>
 
                     <div className="grid lg:grid-cols-12 gap-16">
                         {/* Article Text */}
                         <div className="lg:col-span-8">
-                            <article className="prose prose-invert prose-orange max-w-none">
-                                <div className="text-xl text-gray-400 font-light leading-relaxed mb-12 italic">
-                                    "{post.excerpt}"
+                            <article className="prose-blog-premium">
+                                <div className="text-2xl text-orange-400 font-medium leading-relaxed mb-16 border-l-4 border-orange-500 pl-8 py-2 bg-orange-500/5 rounded-r-2xl">
+                                    {post.excerpt}
                                 </div>
 
                                 {post.content ? (
                                     <div dangerouslySetInnerHTML={{ __html: post.content }} />
                                 ) : (
-                                    <div className="space-y-8">
+                                    <div className="space-y-10">
                                         <p>
                                             O futuro da tecnologia não está apenas na inovação por si só, mas em como aplicamos essas ferramentas para resolver desafios humanos e empresariais de maneira escalável. Na Sapienza, acreditamos que a engenharia de software de excelência é a base para qualquer transformação digital bem-sucedida.
                                         </p>
-                                        <h2 className="text-white font-black">A Evolução da Engenharia</h2>
+                                        <h2 className="text-white">A Evolução da Engenharia</h2>
                                         <p>
                                             Historicamente, os projetos eram vistos como ativos finitos. Hoje, entendemos que software é um organismo vivo que precisa de cuidado constante, evolução tecnológica e um alinhamento ferrenho com os objetivos de negócio.
                                         </p>
-                                        <h3 className="text-white font-bold">Pontos Chave:</h3>
+                                        <h3 className="text-white">Pilares da Nossa Abordagem</h3>
                                         <ul>
-                                            <li>Foco absoluto no valor de negócio entregue.</li>
-                                            <li>Arquiteturas resilientes e preparadas para escala global.</li>
-                                            <li>Integração ética e estratégica de Inteligência Artificial.</li>
-                                            <li>Experiência do usuário (UX) como diferencial competitivo.</li>
+                                            <li><strong>Foco em Valor:</strong> Entrega absoluta de ROI para o negócio.</li>
+                                            <li><strong>Arquitetura Resiliente:</strong> Sistemas preparados para escala global e failover.</li>
+                                            <li><strong>Inteligência Aplicada:</strong> Integração estratégica de LLMs e modelos preditivos.</li>
+                                            <li><strong>UX como Diferencial:</strong> interfaces que encantam e facilitam a jornada.</li>
                                         </ul>
                                         <p>
                                             Este artigo explora como estamos liderando essa mudança, transformando complexidade em clareza e garantindo que nossos parceiros estejam sempre um passo à frente no ecossistema digital.
@@ -145,30 +148,32 @@ export default async function BlogPostPage({
                                     </div>
                                 )}
                             </article>
-
-                            {/* Share & Tags Section could go here */}
                         </div>
 
                         {/* Sidebar */}
-                        <aside className="lg:col-span-4 space-y-12">
-                            <div className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] sticky top-32">
-                                <h4 className="text-white font-bold mb-6 flex items-center gap-3">
-                                    <span className="w-2 h-2 bg-orange-500 rounded-full" />
-                                    Newsletter Sapienza
-                                </h4>
-                                <p className="text-sm text-gray-400 mb-6">
-                                    Receba insights estratégicos sobre tecnologia e inovação diretamente no seu e-mail.
-                                </p>
-                                <form className="space-y-4">
-                                    <input
-                                        type="email"
-                                        placeholder="Seu e-mail"
-                                        className="w-full px-6 py-4 bg-[#020617] border border-white/10 rounded-2xl text-white text-sm focus:border-orange-500 outline-none transition-colors"
-                                    />
-                                    <button className="w-full py-4 bg-orange-500 text-white font-bold rounded-2xl hover:bg-orange-600 transition-colors">
-                                        Inscrever agora
-                                    </button>
-                                </form>
+                        <aside className="lg:col-span-4">
+                            <div className="sticky top-32 space-y-8">
+                                <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-orange-500/20 transition-colors" />
+
+                                    <h4 className="text-white font-bold text-xl mb-4 flex items-center gap-3">
+                                        <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+                                        Sapienza Newsletter
+                                    </h4>
+                                    <p className="text-sm text-slate-400 mb-8 leading-relaxed">
+                                        Insights exclusivos sobre Engenharia de Software e IA diretamente para líderes técnicos.
+                                    </p>
+                                    <form className="space-y-4">
+                                        <input
+                                            type="email"
+                                            placeholder="Seu melhor e-mail"
+                                            className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white text-sm focus:border-orange-500 focus:bg-white/10 outline-none transition-all"
+                                        />
+                                        <button className="w-full py-4 bg-orange-500 text-white font-bold rounded-2xl hover:bg-orange-600 shadow-lg shadow-orange-500/20 transition-all active:scale-[0.98]">
+                                            Assinar Insights
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </aside>
                     </div>

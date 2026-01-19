@@ -1,26 +1,63 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+.mesh-gradient-premium {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+}
+
+/* Premium Blog Typography - Optimized for Dark Theme */
+.prose-blog-premium {
+  @apply prose prose-invert prose-lg prose-orange max-w-none;
+
+  /* Headings - Bold and Clear */
+  @apply prose-headings:font-display prose-headings:font-black prose-headings:tracking-tight prose-headings:text-white;
+
+  /* Paragraphs - Light and Readable */
+  @apply prose-p:text-gray-100 prose-p:leading-relaxed prose-p:text-lg;
+
+  /* Strong text - Pure white for emphasis */
+  @apply prose-strong:text-white prose-strong:font-bold;
+
+  /* Links - Orange accent */
+  @apply prose-a:text-orange-400 prose-a:no-underline prose-a:font-semibold hover:prose-a:text-orange-300;
+
+  /* Lists - Light text */
+  @apply prose-li:text-gray-100;
+
+  /* Blockquotes - Styled with orange accent */
+  @apply prose-blockquote:border-orange-500 prose-blockquote:bg-orange-500/5 prose-blockquote:py-2 prose-blockquote:px-8 prose-blockquote:rounded-2xl prose-blockquote:not-italic prose-blockquote:text-gray-100;
+
+  /* Code - Premium styling */
+  @apply prose-code:text-orange-300 prose-code:bg-white/5 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono;
 }

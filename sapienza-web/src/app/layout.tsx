@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import { Header, Footer, Analytics } from '@/components/layout';
 import { siteConfig } from '@/lib/site-config';
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+});
+
+const outfit = Outfit({
+  variable: '--font-outfit',
   subsets: ['latin'],
 });
 
@@ -52,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-[#020617] text-slate-200`} suppressHydrationWarning>
         <Analytics
           gaId={siteConfig.analytics.googleAnalyticsId}
           fbPixelId={siteConfig.analytics.facebookPixelId}
