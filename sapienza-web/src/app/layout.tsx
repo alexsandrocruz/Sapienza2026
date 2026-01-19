@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <Analytics
           gaId={siteConfig.analytics.googleAnalyticsId}
           fbPixelId={siteConfig.analytics.facebookPixelId}
