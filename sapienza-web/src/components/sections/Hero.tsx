@@ -176,7 +176,7 @@ export function Hero() {
                     {/* Right: Interactive 3D/Glass Interface */}
                     <motion.div
                         style={{ y: y1, opacity, scale }}
-                        className="relative h-[600px] lg:h-[700px] flex items-center justify-center pointer-events-none lg:pointer-events-auto"
+                        className="relative h-[480px] lg:h-[560px] flex items-center justify-center pointer-events-none lg:pointer-events-auto"
                     >
                         {/* Central Hub Card */}
                         <motion.div
@@ -237,7 +237,7 @@ export function Hero() {
                                 x: mousePosition.x * 30,
                                 y: mousePosition.y * 20
                             }}
-                            className="absolute -top-12 -right-4 w-[240px] h-[180px] rounded-3xl overflow-hidden border border-white/10 shadow-3xl z-30 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
+                            className="absolute -top-8 -right-4 w-[200px] h-[150px] rounded-3xl overflow-hidden border border-white/10 shadow-3xl z-30 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
                         >
                             <Image src="/images/hero-analytics.png" alt="Intelligence" fill className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
                             <div className="absolute inset-0 p-4 bg-gradient-to-t from-zinc-950/80 to-transparent flex flex-col justify-end">
@@ -256,7 +256,7 @@ export function Hero() {
                                 x: mousePosition.x * -40,
                                 y: mousePosition.y * -30
                             }}
-                            className="absolute -bottom-16 -left-8 w-[260px] h-[320px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl z-10 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
+                            className="absolute -bottom-12 -left-8 w-[220px] h-[280px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl z-10 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
                         >
                             <Image src="/images/hero-mobile.png" alt="Experience" fill className="object-cover opacity-50 mix-blend-screen" />
                             <div className="absolute inset-0 p-6 bg-gradient-to-t from-zinc-950/90 to-transparent flex flex-col justify-end gap-3">
