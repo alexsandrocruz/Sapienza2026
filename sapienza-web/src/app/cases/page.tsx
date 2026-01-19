@@ -1,158 +1,129 @@
-import { Metadata } from 'next';
+'use client';
+
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { casesData } from '@/data/cases';
+import CaseCard from '@/components/sections/CaseCard';
+import CaseFilters from '@/components/sections/CaseFilters';
 import { CTA } from '@/components/sections';
 
-export const metadata: Metadata = {
-    title: 'Cases de Sucesso',
-    description: 'Conheça os projetos que desenvolvemos e como ajudamos nossos clientes a alcançar resultados extraordinários.',
-};
-
-const cases = [
-    {
-        slug: 'fundamental1e2',
-        title: 'Plataforma Educacional Fundamental1e2',
-        category: 'Educação',
-        description: 'Desenvolvimento do MVP para plataforma educacional que atende alunos e professores do ensino fundamental com entrega extremamente rápida.',
-        results: ['MVP em 8 semanas', 'Validação em ambiente real', 'Iterações contínuas'],
-        image: '/images/portfolio-ecommerce.jpg',
-        tech: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-    },
-    {
-        slug: 'rastreamento-equipes',
-        title: 'Plataforma de Rastreamento de Equipes',
-        category: 'Logistics',
-        description: 'Sistema de monitoramento em tempo real para empresas que gerenciam funcionários em campo, com comunicação instantânea e relatórios de desempenho.',
-        results: ['Visibilidade em tempo real', 'Decisões estratégicas', '+40% eficiência'],
-        image: '/images/team.jpg',
-        tech: ['React Native', 'Firebase', 'Google Maps API'],
-    },
-    {
-        slug: 'gestao-investimentos',
-        title: 'App de Gestão de Investimentos',
-        category: 'Fintech',
-        description: 'Aplicativo para empresa financeira que facilita a captação de investimentos e pagamento de rendimentos com controle para unidades franqueadas.',
-        results: ['Transparência total', 'Gestão simplificada', 'Múltiplas unidades'],
-        image: '/images/ecommerce.jpg',
-        tech: ['Flutter', '.NET Core', 'SQL Server', 'Azure'],
-    },
-    {
-        slug: 'ecommerce-b2b',
-        title: 'Plataforma E-commerce B2B',
-        category: 'E-commerce',
-        description: 'Marketplace B2B completo com catálogo de produtos, gestão de pedidos, integração ERP e portal do representante.',
-        results: ['+200% vendas online', 'Integração SAP', 'App para vendedores'],
-        image: '/images/hero-innovation.jpg',
-        tech: ['Next.js', 'ABP.io', 'MongoDB', 'Stripe'],
-    },
-];
-
 export default function CasesPage() {
+    const [activeCategory, setActiveCategory] = useState('Todos');
+
+    const categories = useMemo(() => {
+        const cats = new Set(casesData.map(c => c.category));
+        return Array.from(cats);
+    }, []);
+
+    const filteredCases = useMemo(() => {
+        if (activeCategory === 'Todos') return casesData;
+        return casesData.filter(c => c.category === activeCategory);
+    }, [activeCategory]);
+
     return (
-        <>
-            {/* Hero */}
-            <section className="bg-gradient-to-br from-gray-900 to-gray-800 py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase mb-4">
-                        Portfólio
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                        Histórias de <span className="text-orange-500">Sucesso</span>
-                    </h1>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                        Cada projeto é uma parceria. Conheça como ajudamos empresas a transformar
-                        suas ideias em produtos digitais de sucesso.
-                    </p>
+        <main className="bg-[#020617] min-h-screen pt-32">
+            {/* Hero Section with Cinematic Background */}
+            <section className="relative py-20 overflow-hidden">
+                {/* Background effects */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[150px]" />
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="inline-block text-orange-500 font-black text-[10px] tracking-[0.4em] uppercase mb-4 border border-orange-500/30 px-4 py-2 rounded-full bg-orange-500/5">
+                            Showcase • 2024-2026
+                        </span>
+                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+                            Arquitetura de <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600">
+                                Resultados Reais
+                            </span>
+                        </h1>
+                        <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                            Da automação logística à orquestração de sistemas de missão crítica.
+                            Explore como fundimos engenharia de precisão com inteligência transformadora.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Cases Grid */}
-            <section className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {cases.map((caseItem) => (
-                            <article
-                                key={caseItem.slug}
-                                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
-                            >
-                                <div className="relative h-64 overflow-hidden">
-                                    <Image
-                                        src={caseItem.image}
-                                        alt={caseItem.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                    <span className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                                        {caseItem.category}
-                                    </span>
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
-                                        {caseItem.title}
-                                    </h3>
-                                    <p className="text-gray-600 mb-4 leading-relaxed">
-                                        {caseItem.description}
-                                    </p>
-
-                                    {/* Results */}
-                                    <div className="mb-4">
-                                        <div className="flex flex-wrap gap-2">
-                                            {caseItem.results.map((result, index) => (
-                                                <span
-                                                    key={index}
-                                                    className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
-                                                >
-                                                    ✓ {result}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
-                                        {caseItem.tech.map((tech, index) => (
-                                            <span
-                                                key={index}
-                                                className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
+            {/* Filter Section */}
+            <section className="sticky top-20 z-40 bg-[#020617]/80 backdrop-blur-xl py-6 border-b border-white/5">
+                <div className="max-w-7xl mx-auto px-6">
+                    <CaseFilters
+                        categories={categories}
+                        activeCategory={activeCategory}
+                        onCategoryChange={setActiveCategory}
+                    />
                 </div>
             </section>
 
-            {/* Testimonial */}
-            <section className="py-20 bg-white">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="text-5xl mb-6">💬</div>
-                    <blockquote className="text-2xl text-gray-700 italic mb-8 leading-relaxed">
-                        &ldquo;A SAPIENZA transformou nossa ideia em um produto real em tempo recorde.
-                        A equipe entendeu nossas necessidades e entregou muito além das expectativas.&rdquo;
+            {/* Grid Section */}
+            <section className="py-20">
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div
+                        layout
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        <AnimatePresence mode="popLayout">
+                            {filteredCases.map((project, idx) => (
+                                <motion.div
+                                    key={project.slug}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <CaseCard project={project} index={idx} />
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {filteredCases.length === 0 && (
+                        <div className="text-center py-40">
+                            <h3 className="text-2xl text-gray-500 font-medium">Nenhum projeto encontrado nesta categoria.</h3>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            {/* Testimonial / Trust Section */}
+            <section className="py-32 bg-[#0b0f19] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#020617] to-transparent h-40" />
+                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+                    <span className="text-orange-500 text-5xl mb-12 block group-hover:scale-110 transition-transform">"</span>
+                    <blockquote className="text-2xl md:text-4xl text-white font-medium italic mb-12 leading-tight tracking-tight">
+                        A Sapienza transformou nossa visão em uma arquitetura de alta fidelidade em tempo recorde.
+                        A precisão técnica deles é o que nos permitiu escalar sem atrito.
                     </blockquote>
-                    <div className="flex items-center justify-center gap-4">
-                        <div className="w-16 h-16 rounded-full overflow-hidden relative">
+                    <div className="flex items-center justify-center gap-6">
+                        <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-orange-500/20 shadow-[0_0_30px_rgba(249,115,22,0.1)]">
                             <Image
                                 src="/images/testimonial-carlos.jpg"
-                                alt="Cliente"
+                                alt="Carlos Eduardo"
                                 fill
                                 className="object-cover"
                             />
                         </div>
                         <div className="text-left">
-                            <div className="font-bold text-gray-900">Carlos Eduardo</div>
-                            <div className="text-gray-600">CEO, Fundamental1e2</div>
+                            <div className="font-bold text-white text-xl">Carlos Eduardo</div>
+                            <div className="text-orange-500 font-bold text-sm tracking-widest uppercase">CEO, Fundamental1e2</div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <CTA />
-        </>
+        </main>
     );
 }
