@@ -210,3 +210,22 @@ export const casesData: CaseProject[] = [
 
 export const getAllCasesSlugs = () => casesData.map(c => c.slug);
 export const getCaseBySlug = (slug: string) => casesData.find(c => c.slug === slug);
+
+/**
+ * Returns a hybrid list of cases for the home page:
+ * 1. All cases with 'featured: true'
+ * 2. Filled to 'count' with random cases from the remainder
+ */
+export const getHomeFeaturedCases = (count: number = 3): CaseProject[] => {
+    const featured = casesData.filter(c => c.featured);
+    const others = casesData.filter(c => !c.featured);
+
+    // Shuffle both
+    const shuffledFeatured = [...featured].sort(() => Math.random() - 0.5);
+    const shuffledOthers = [...others].sort(() => Math.random() - 0.5);
+
+    // Combine
+    const combined = [...shuffledFeatured, ...shuffledOthers];
+
+    return combined.slice(0, count);
+};

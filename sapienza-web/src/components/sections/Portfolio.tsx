@@ -1,37 +1,19 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-const projects = [
-    {
-        title: 'Fundamental1e2',
-        description: 'Arquitetura e desenvolvimento do ecossistema educacional MVP, focado em escalabilidade e UX intuitiva para o ensino fundamental.',
-        category: 'EdTech',
-        result: 'MVP VALIDADO EM AMBIENTE REAL',
-        image: '/images/hero-team.png',
-        stats: { coverage: '100%', time: '3 meses' }
-    },
-    {
-        title: 'Rastreio de Equipes',
-        description: 'Orquestração de dados em tempo real para monitoramento e gestão de frotas críticas com dashboards analíticos avançados.',
-        category: 'Enterprise',
-        result: 'VISIBILIDADE TOTAL DE OPERAÇÕES',
-        image: '/images/hero-analytics.png',
-        stats: { uptime: '99.9%', latency: '40ms' }
-    },
-    {
-        title: 'Gestão de Investimentos',
-        description: 'Plataforma FinTech segura para captação, rendimentos e governança financeira de unidades franqueadas em larga escala.',
-        category: 'FinTech',
-        result: 'GOVERNANÇA E CONTROLE ABSOLUTO',
-        image: '/images/hero-mobile.png',
-        stats: { security: 'Grade A', volume: 'R$ 10M+' }
-    },
-];
+import { getHomeFeaturedCases, CaseProject } from '@/data/cases';
 
 export function Portfolio() {
+    const [displayProjects, setDisplayProjects] = useState<CaseProject[]>([]);
+
+    useEffect(() => {
+        // Load hybrid randomized cases on client to avoid hydration mismatch
+        setDisplayProjects(getHomeFeaturedCases(3));
+    }, []);
+
     return (
         <section id="portfolio" className="py-32 bg-[#020617] relative overflow-hidden">
             {/* Ambient Lighting */}
@@ -59,15 +41,17 @@ export function Portfolio() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                    {projects.map((project, idx) => (
+                    {displayProjects.map((project, idx) => (
                         <motion.div
-                            key={project.title}
+                            key={project.slug}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
                             className="group relative flex flex-col bg-zinc-900/20 rounded-[48px] overflow-hidden border border-white/5 hover:border-orange-500/40 transition-all duration-700 shadow-3xl"
                         >
+                            <Link href={`/cases/${project.slug}`} className="absolute inset-0 z-20" />
+
                             <div className="relative h-72 overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -101,7 +85,7 @@ export function Portfolio() {
                                         </div>
                                         <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
                                             RESULTADO: <br />
-                                            <span className="text-white text-xs">{project.result}</span>
+                                            <span className="text-white text-xs line-clamp-1">{project.results[0]}</span>
                                         </div>
                                     </div>
 
