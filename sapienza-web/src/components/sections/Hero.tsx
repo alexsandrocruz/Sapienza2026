@@ -85,8 +85,9 @@ export function Hero() {
                 />
             </div>
 
-            <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+            <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
+                <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-2 items-center">
+
                     {/* Left: Narrative & CTA */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -176,7 +177,7 @@ export function Hero() {
                     {/* Right: Interactive 3D/Glass Interface */}
                     <motion.div
                         style={{ y: y1, opacity, scale }}
-                        className="relative h-[480px] lg:h-[560px] flex items-center justify-center pointer-events-none lg:pointer-events-auto"
+                        className="relative h-[420px] lg:h-[480px] flex items-center justify-center pointer-events-none lg:pointer-events-auto"
                     >
                         {/* Central Hub Card */}
                         <motion.div
@@ -185,7 +186,7 @@ export function Hero() {
                                 rotateZ: [-0.5, 0.5, -0.5],
                             }}
                             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                            className="relative z-20 w-full max-w-[440px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] bg-zinc-950/40 backdrop-blur-3xl"
+                            className="relative z-20 w-full max-w-[400px] aspect-[4/5] rounded-[48px] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] bg-zinc-950/40 backdrop-blur-3xl"
                         >
                             <div className="absolute inset-0">
                                 <Image
@@ -237,7 +238,7 @@ export function Hero() {
                                 x: mousePosition.x * 30,
                                 y: mousePosition.y * 20
                             }}
-                            className="absolute -top-8 -right-4 w-[200px] h-[150px] rounded-3xl overflow-hidden border border-white/10 shadow-3xl z-30 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
+                            className="absolute -top-6 -right-4 w-[180px] h-[135px] rounded-3xl overflow-hidden border border-white/10 shadow-3xl z-30 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
                         >
                             <Image src="/images/hero-analytics.png" alt="Intelligence" fill className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
                             <div className="absolute inset-0 p-4 bg-gradient-to-t from-zinc-950/80 to-transparent flex flex-col justify-end">
@@ -256,7 +257,7 @@ export function Hero() {
                                 x: mousePosition.x * -40,
                                 y: mousePosition.y * -30
                             }}
-                            className="absolute -bottom-12 -left-8 w-[220px] h-[280px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl z-10 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
+                            className="absolute -bottom-10 -left-8 w-[200px] h-[250px] rounded-[40px] overflow-hidden border border-white/10 shadow-3xl z-10 bg-zinc-900/40 backdrop-blur-xl hidden xl:block"
                         >
                             <Image src="/images/hero-mobile.png" alt="Experience" fill className="object-cover opacity-50 mix-blend-screen" />
                             <div className="absolute inset-0 p-6 bg-gradient-to-t from-zinc-950/90 to-transparent flex flex-col justify-end gap-3">
