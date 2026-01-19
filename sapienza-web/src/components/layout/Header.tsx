@@ -78,10 +78,10 @@ export function Header() {
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <span className={`text-2xl font-bold transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
+                        <span className={`text-4xl font-bold transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
                             Sapienza
                         </span>
-                        <span className="text-2xl font-bold text-orange-500">Digital</span>
+                        <span className="text-4xl font-bold text-orange-500">Digital</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -208,8 +208,8 @@ export function Header() {
                                                         key={subItem.name}
                                                         href={subItem.href}
                                                         className={`group block p-4 rounded-xl transition-all ${subItem.comingSoon
-                                                                ? 'opacity-60 cursor-not-allowed bg-gray-50'
-                                                                : 'hover:bg-orange-50'
+                                                            ? 'opacity-60 cursor-not-allowed bg-gray-50'
+                                                            : 'hover:bg-orange-50'
                                                             }`}
                                                         onClick={(e) => {
                                                             if (subItem.comingSoon) {
@@ -317,8 +317,8 @@ export function Header() {
                                                         <Link
                                                             href={subItem.href}
                                                             className={`flex items-center gap-2 ${subItem.comingSoon
-                                                                    ? 'opacity-60 cursor-not-allowed text-gray-400'
-                                                                    : 'text-gray-700 hover:text-orange-500'
+                                                                ? 'opacity-60 cursor-not-allowed text-gray-400'
+                                                                : 'text-gray-700 hover:text-orange-500'
                                                                 }`}
                                                             onClick={(e) => {
                                                                 if (subItem.comingSoon) {
