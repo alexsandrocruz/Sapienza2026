@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import {
     AboutHero,
+    AboutStats,
     AboutMissionVision,
     AboutValues,
     HowWeWork,
@@ -20,6 +21,9 @@ export default function SobrePage() {
         <main className="bg-[#020617]">
             {/* Cinematic Hero Narrative */}
             <AboutHero />
+
+            {/* Impact Metrics (Animated Stats) */}
+            <AboutStats />
 
             {/* Mission & Vision */}
             <AboutMissionVision />

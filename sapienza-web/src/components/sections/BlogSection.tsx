@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockBlogPosts } from '@/data/blog';
+import { blogPosts } from '@/data/blog';
 
 export function BlogSection() {
     return (
@@ -31,7 +31,7 @@ export function BlogSection() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    {mockBlogPosts.map((post) => (
+                    {blogPosts.slice(0, 3).map((post) => (
                         <article
                             key={post.id}
                             className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-gray-100"
