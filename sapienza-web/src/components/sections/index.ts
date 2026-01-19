@@ -21,3 +21,7 @@ export { default as TrustLogos } from './TrustLogos';
 export { default as CloudServiceLoop } from './CloudServiceLoop';
 export { default as PartnerSuccess } from './PartnerSuccess';
 export { default as CloudBlogGrid } from './CloudBlogGrid';
+export { default as ModernizationTwoSpeed } from './ModernizationTwoSpeed';
+export { default as ModernizationRocket } from './ModernizationRocket';
+export { default as ModernizationGrid } from './ModernizationGrid';
+export { default as ResultsGrid } from './ResultsGrid';

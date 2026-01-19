@@ -19,6 +19,10 @@ import {
     CloudServiceLoop,
     PartnerSuccess,
     CloudBlogGrid,
+    ModernizationTwoSpeed,
+    ModernizationRocket,
+    ModernizationGrid,
+    ResultsGrid,
 } from '@/components/sections';
 import { siteConfig } from '@/lib/site-config';
 
@@ -225,11 +229,15 @@ export default async function ServicePage({
                 </section>
             )}
 
-            {service.cloudLoop && <CloudServiceLoop data={service.cloudLoop} />}
-
-            {service.cloudPartners && <PartnerSuccess data={service.cloudPartners} />}
-
             {service.cloudBlogArticles && <CloudBlogGrid data={service.cloudBlogArticles} />}
+
+            {service.modernizationTwoSpeed && <ModernizationTwoSpeed data={service.modernizationTwoSpeed} />}
+
+            {service.modernizationRocket && <ModernizationRocket data={service.modernizationRocket} />}
+
+            {service.modernizationServicesGrid && <ModernizationGrid data={service.modernizationServicesGrid} />}
+
+            {service.modernizationResults && <ResultsGrid data={service.modernizationResults} />}
 
             {/* Benefits */}
             <section className="py-24 bg-[#0b0f19]">

@@ -305,48 +305,138 @@ export const servicesData: ServiceData[] = [
         ],
     },
     {
-        slug: 'transformacao-digital',
-        badge: 'Transformação Digital',
-        title: 'Transformação Digital',
-        subtitle: 'Transforme seus negócios com inovação digital contínua',
-        heroDescription: 'Projetamos experiências e ecossistemas centrados no cliente para uma transformação digital significativa.',
-        sections: [
-            {
-                title: 'Modernizar. Mobilizar. Melhorar.',
-                description: 'Simplificamos a evolução e aceleramos os recursos de dimensionamento modernizando suas operações, produtos inovadores e plataformas, aproveitando análises e mobilizando seus negócios.',
-            },
-            {
-                title: 'Digitalização',
-                description: 'Nossa experiência em serviços avançados de transformação digital, incluindo desenvolvimento de produtos proprietários e personalização de software, ajuda você a organizar e ativar melhores processos.',
-            },
-            {
-                title: 'Evolução orientada por dados',
-                description: 'Nossos serviços de consultoria, soluções de big data e recursos avançados de análise aceleram a transformação de seus negócios com insights acionáveis em tempo real.',
-            },
-            {
-                title: 'Modernização de TI legada',
-                description: 'Temos experiência em reengenharia de tecnologia, sistemas e processos para modernização que maximiza a eficiência e a inovação enquanto minimiza o risco.',
-            },
-            {
-                title: 'Serviços em Nuvem',
-                description: 'Fornecemos insights, estratégia e engenharia especializados para gerenciamento abrangente de operações em nuvem. Do desenvolvimento à integração e migração.',
-            },
-        ],
+        slug: 'modernizacao-legado',
+        badge: 'Modernização',
+        title: 'Modernização de Sistemas Legados',
+        subtitle: 'Transforme o passado no seu motor de inovação futuro',
+        heroDescription: 'Sistemas legados não precisam ser uma âncora para sua agilidade opercional. Na Sapienza, ajudamos você a desmantelar a complexidade técnica, migrar para arquiteturas cloud-native e habilitar capacidades de IA sem interromper o fluxo de valor do seu negócio.',
+        heroImage: '/images/services/modernization-hero.png',
+        modernizationTwoSpeed: {
+            title: 'Nossa abordagem de 2 velocidades para ganhos rápidos e valor de transformação a longo prazo',
+            subtitle: 'Equilibramos a necessidade de ROI imediato com a visão estratégica de futuro.',
+            cycles: [
+                {
+                    id: 'cycle-1',
+                    label: 'Value Delivery Cycle 1',
+                    value: 'Immediate ROI',
+                    items: ['Quick wins', 'Melhorias de UX', 'Automação de processos core']
+                },
+                {
+                    id: 'long-term',
+                    label: 'Long Term Transformation',
+                    value: 'Sustained Agility',
+                    items: ['Refactor', 'Replatform', 'Relocate', 'Rehost']
+                }
+            ]
+        },
+        modernizationRocket: {
+            title: 'A Jornada de Modernização Sapienza',
+            phases: [
+                {
+                    id: 'ignite',
+                    label: 'Ignite',
+                    description: 'Garanta um início controlado para sua modernização de TI com nossos processos comprovados. Defina o valor da sua transformação digital planejada e justifique seu investimento.',
+                    color: '#c084fc'
+                },
+                {
+                    id: 'reinvent',
+                    label: 'Reinvent',
+                    description: 'Decole e pouse na nuvem com nossa abordagem de migração orientada a resultados que combina design de solução, gerenciamento de projetos, garantia de qualidade e implantação.',
+                    color: '#60a5fa'
+                },
+                {
+                    id: 'accelerate',
+                    label: 'Accelerate',
+                    description: 'Redefina sua trajetória de crescimento de negócios com inovações além da nuvem. Adote tecnologias de fronteira para desbloquear agilidade extra, eficiências e fluxos de receita.',
+                    color: '#4ade80'
+                }
+            ]
+        },
+        modernizationServicesGrid: {
+            title: 'Serviços de Modernização de Aplicações',
+            description: 'Soluções ponta a ponta para transformar sua paisagem tecnológica de forma incremental e segura.',
+            items: [
+                {
+                    title: 'Racionalização da paisagem de aplicações',
+                    description: 'Obtenha clareza sobre o que fica, o que sai e quais ativos devem ser transformados — seja por migração, refatoração ou substituição.',
+                    image: '/images/services/modern-grid-1.png'
+                },
+                {
+                    title: 'Avaliação de dívida técnica',
+                    description: 'Identificamos códigos problemáticos, bem como artefatos de arquitetura e infraestrutura em todo o seu portfólio de tecnologia.',
+                    image: '/images/services/modern-grid-2.png'
+                },
+                {
+                    title: 'Prontidão para nuvem e avaliação de TCO',
+                    description: 'Nossos consultores avaliam sua prontidão técnica para adoção da nuvem, identificando lacunas de capacidade e priorizando candidatos.',
+                    image: '/images/services/modern-grid-3.png'
+                },
+                {
+                    title: 'Desenvolvimento de estratégia de produto',
+                    description: 'A modernização de aplicativos legados é mais do que consertar código. É uma oportunidade para reimaginar seu portfólio de produtos.',
+                    image: '/images/services/modern-grid-4.png'
+                },
+                {
+                    title: 'Design de Experiência (UX/UI)',
+                    description: 'Reimagine a interação com seus aplicativos legados usando princípios de design centrados no ser humano e insights do usuário.',
+                    image: '/images/services/modern-grid-5.png'
+                },
+                {
+                    title: 'Descoberta de Solução',
+                    description: 'Desarrisque sua estratégia para modernização de aplicações legadas. Evite partidas falsas com pesquisa de mercado profunda.',
+                    image: '/images/services/modern-grid-6.png'
+                }
+            ]
+        },
+        modernizationResults: {
+            title: 'Resultados que alcançamos para nossos clientes',
+            items: [
+                {
+                    metric: '70+ novos datasets',
+                    description: 'Disponibilizados a partir de um sistema baseado em mainframe para melhor gestão de inventário e analytics de PDV.',
+                    linkText: 'Ler case study',
+                    link: '#',
+                    icon: 'cloud'
+                },
+                {
+                    metric: '30% redução de custos',
+                    description: 'Após migrar 60+ aplicações BSS para um ambiente multi-cloud, reduzindo pela metade o time-to-market.',
+                    linkText: 'Ler case study',
+                    link: '#',
+                    icon: 'chart'
+                },
+                {
+                    metric: '50% menores custos de manutenção',
+                    description: 'Após migrar para uma arquitetura de microsserviços para um grande player de varejo.',
+                    linkText: 'Ler case study',
+                    link: '#',
+                    icon: 'cpu'
+                }
+            ]
+        },
         features: [
-            'Análise de processos',
-            'Automação de tarefas',
-            'Migração para cloud',
-            'Integração de sistemas',
-            'Big Data e Analytics',
-            'DevOps e CI/CD',
+            'Avaliação de Dívida Técnica (As-Is)',
+            'Estratégia de 2 Velocidades (ROI vs Futuro)',
+            'Migração Cloud-native (Rehost, Refactor, Replatform)',
+            'Arquiteturas de Microsserviços & Event-driven',
+            'Modernização de UX/UI Core',
+            'Implementação de pipelines CI/CD modernos',
         ],
         benefits: [
-            'Redução de custos operacionais',
-            'Maior eficiência',
-            'Experiência do cliente melhorada',
-            'Competitividade aumentada',
-            'Insights em tempo real',
-            'Transição segura para cloud',
+            'Eliminação de silos tecnológicos',
+            'Escalabilidade operacional imediata',
+            'Redução drástica do custo de manutenção',
+            'Agilidade competitiva habilitada por IA',
+            'Experiência do usuário (CX/EX) renovada',
+            'Time-to-market acelerado para novas features',
+        ],
+        sdlcPhases: [
+            { title: 'Inventory', description: 'Mapeamento completo da paisagem de apps e racionalização estratégica.', icon: '📋' },
+            { title: 'Assessment', description: 'Auditoria de código, segurança e prontidão para cloud.', icon: '🔍' },
+            { title: 'Redesign', description: 'Definição da futura arquitetura e estratégia de migração incremental.', icon: '🏗️' },
+            { title: 'Migration', description: 'Execução das trilhas de transformação (6 R\'s) com zero downtime.', icon: '🚀' },
+            { title: 'Modernization', description: 'Habilitação de novas capacidades (IA, Mobile, APIs) no novo core.', icon: '✨' },
+            { title: 'Optimization', description: 'Ajuste fino de custos em nuvem e performance via SRE.', icon: '📈' },
         ],
     },
     {
