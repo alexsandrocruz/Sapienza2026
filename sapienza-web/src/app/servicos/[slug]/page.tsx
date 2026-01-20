@@ -14,8 +14,6 @@ import {
     BlogSection,
     IDEAbookFramework,
     TrustLogos,
-    CloudServiceLoop,
-    PartnerSuccess,
     CloudBlogGrid,
     ModernizationTwoSpeed,
     ModernizationRocket,

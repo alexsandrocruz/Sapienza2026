@@ -76,7 +76,6 @@ export default function ModernizationTwoSpeed({ data }: ModernizationTwoSpeedPro
                             viewport={{ once: true }}
                             d="M 50 350 Q 200 50 400 150 Q 600 250 750 350"
                             fill="url(#gradient-longterm)"
-                            // @ts-ignore
                             stroke="#3b82f6"
                             strokeWidth="3"
                         />
@@ -89,7 +88,6 @@ export default function ModernizationTwoSpeed({ data }: ModernizationTwoSpeedPro
                             viewport={{ once: true }}
                             d="M 80 350 L 120 150 L 180 350 M 250 350 L 300 100 L 350 350 M 500 350 L 550 80 L 600 350"
                             fill="url(#gradient-cycle1)"
-                            // @ts-ignore
                             stroke="#10b981"
                             strokeWidth="2"
                             strokeDasharray="5,5"

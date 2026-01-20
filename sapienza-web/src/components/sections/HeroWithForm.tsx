@@ -18,7 +18,6 @@ export function HeroWithForm({
     subtitle,
     description,
     formId,
-    formTheme = 'light',
     backgroundColor = 'bg-gray-50',
 }: HeroWithFormProps) {
     return (

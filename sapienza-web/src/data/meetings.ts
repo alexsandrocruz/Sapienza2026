@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+// LucideIcon removed as it was unused
 
 export interface MeetingType {
     id: string;

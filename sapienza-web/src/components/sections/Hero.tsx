@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isLoaded, setIsLoaded] = useState(false);
     const heroRef = useRef<HTMLElement>(null);
     const { scrollY } = useScroll();
 
@@ -16,7 +15,6 @@ export function Hero() {
     const scale = useTransform(scrollY, [0, 300], [1, 1.05]);
 
     useEffect(() => {
-        setIsLoaded(true);
         const handleMouseMove = (e: MouseEvent) => {
             if (heroRef.current) {
                 const rect = heroRef.current.getBoundingClientRect();

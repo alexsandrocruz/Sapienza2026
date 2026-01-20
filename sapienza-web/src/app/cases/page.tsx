@@ -101,7 +101,7 @@ export default function CasesPage() {
             <section className="py-32 bg-[#0b0f19] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#020617] to-transparent h-40" />
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                    <span className="text-orange-500 text-5xl mb-12 block group-hover:scale-110 transition-transform">"</span>
+                    <span className="text-orange-500 text-5xl mb-12 block group-hover:scale-110 transition-transform">&quot;</span>
                     <blockquote className="text-2xl md:text-4xl text-white font-medium italic mb-12 leading-tight tracking-tight">
                         A Sapienza transformou nossa visão em uma arquitetura de alta fidelidade em tempo recorde.
                         A precisão técnica deles é o que nos permitiu escalar sem atrito.

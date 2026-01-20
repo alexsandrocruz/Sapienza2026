@@ -62,7 +62,7 @@ export function About() {
                                 <div className="text-gray-400 text-xs font-mono uppercase tracking-widest leading-tight">Anos de <br />Engenharia Core</div>
                             </div>
                             <p className="text-gray-400 text-sm leading-relaxed italic">
-                                "Nossa história é escrita com o sucesso escalável de nossos parceiros."
+                                &quot;Nossa história é escrita com o sucesso escalável de nossos parceiros.&quot;
                             </p>
                         </motion.div>
                     </motion.div>

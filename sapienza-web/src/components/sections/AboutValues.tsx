@@ -70,7 +70,7 @@ export default function AboutValues() {
                     {/* Visual filler card with call to action or brand slogan */}
                     <div className="relative group bg-gradient-to-br from-orange-500/20 to-blue-600/20 rounded-[2.5rem] p-10 flex flex-col justify-center items-center text-center border border-white/10">
                         <h4 className="text-3xl font-black text-white/80 leading-tight">
-                            "Projetos acabam; produtos permanecem."
+                            &quot;Projetos acabam; produtos permanecem.&quot;
                         </h4>
                     </div>
                 </div>

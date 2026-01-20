@@ -19,6 +19,7 @@ export interface BlogPost {
     author: {
         name: string;
         role: string;
+        avatar?: string;
     };
     date: string;
     readTime: string;
@@ -27,7 +28,7 @@ export interface BlogPost {
     tags: string[];
     readingTime: string;
     featured?: boolean;
-    content?: any;
+    content?: React.ReactNode;
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {

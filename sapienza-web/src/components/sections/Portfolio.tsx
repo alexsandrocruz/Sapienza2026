@@ -8,11 +8,17 @@ import { getHomeFeaturedCases, CaseProject } from '@/data/cases';
 
 export function Portfolio() {
     const [displayProjects, setDisplayProjects] = useState<CaseProject[]>([]);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // Load hybrid randomized cases on client to avoid hydration mismatch
-        setDisplayProjects(getHomeFeaturedCases(3));
+        const timeout = setTimeout(() => {
+            setMounted(true);
+            setDisplayProjects(getHomeFeaturedCases(3));
+        }, 0);
+        return () => clearTimeout(timeout);
     }, []);
+
+    if (!mounted) return null; // Or a skeleton
 
     return (
         <section id="portfolio" className="py-32 bg-[#020617] relative overflow-hidden">

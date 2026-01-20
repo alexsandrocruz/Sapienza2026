@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPost, getAllPosts, getPostSlugs } from '@/lib/mdx';
+import { getPost, getPostSlugs } from '@/lib/mdx';
 import { CTA } from '@/components/sections';
 import { notFound } from 'next/navigation';
 

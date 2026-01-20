@@ -27,7 +27,7 @@ export function CTA() {
                                 Ignition • Connect
                             </span>
                             <h2 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tight">
-                                Let's <br />
+                                Let&apos;s <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Talk.</span>
                             </h2>
                             <p className="text-xl text-gray-500 leading-relaxed max-w-xl font-light">

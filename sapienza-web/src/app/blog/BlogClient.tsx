@@ -70,7 +70,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                             <div className="py-24 text-center space-y-6">
                                 <div className="text-6xl text-gray-700">🔍</div>
                                 <h3 className="text-2xl font-bold text-white">Nenhum artigo encontrado</h3>
-                                <p className="text-gray-400">Tente outra categoria ou volte para 'Todos'.</p>
+                                <p className="text-gray-400">Tente outra categoria ou volte para &apos;Todos&apos;.</p>
                                 <button
                                     onClick={() => setActiveCategory('Todos')}
                                     className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white font-bold hover:bg-orange-500 hover:border-orange-500 transition-all"

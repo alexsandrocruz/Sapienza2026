@@ -50,7 +50,7 @@ export default function EnhancedTeamSection() {
 
                         <div className="p-8 bg-blue-600/10 border border-blue-500/20 rounded-[2rem]">
                             <p className="text-lg text-blue-100 font-medium">
-                                "Não entregamos pacotes de horas. Entregamos células de inteligência digital que se integram ao seu contexto."
+                                &quot;Não entregamos pacotes de horas. Entregamos células de inteligência digital que se integram ao seu contexto.&quot;
                             </p>
                         </div>
                     </div>

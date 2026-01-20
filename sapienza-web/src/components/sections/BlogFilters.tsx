@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+// motion import removed as it was unused
 
 interface BlogFiltersProps {
     categories: string[];
@@ -18,8 +18,8 @@ export default function BlogFilters({ categories, activeCategory, onCategoryChan
                             key={category}
                             onClick={() => onCategoryChange(category)}
                             className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 border ${activeCategory === category
-                                    ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/20'
-                                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-orange-500/30 hover:text-white'
+                                ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/20'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:border-orange-500/30 hover:text-white'
                                 }`}
                         >
                             {category}

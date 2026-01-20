@@ -26,7 +26,7 @@ export function DominusForm({
     useEffect(() => {
         // Tentar renderizar quando o script carregar
         const tryRender = () => {
-            const DominusForm = (window as any).DominusForm;
+            const DominusForm = (window as unknown as { DominusForm: Record<string, { render: (id: string, options: Record<string, unknown>) => void }> }).DominusForm;
             if (DominusForm && DominusForm[formId] && containerRef.current) {
                 // Check if container already has content to avoid double rendering
                 if (containerRef.current.innerHTML === '') {
