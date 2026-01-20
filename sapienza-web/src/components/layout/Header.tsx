@@ -34,7 +34,7 @@ const navigation: NavItem[] = [
         subItems: [
             {
                 name: 'Vagas',
-                href: '/vagas',
+                href: '/carreiras',
                 description: 'Junte-se ao time Sapienza',
                 icon: '💼'
             },
