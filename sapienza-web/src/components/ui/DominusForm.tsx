@@ -9,6 +9,7 @@ interface DominusFormProps {
     primaryColor?: string;
     showDescription?: boolean;
     className?: string;
+    onSuccess?: () => void;
 }
 
 export function DominusForm({
