@@ -20,7 +20,7 @@ A Sapienza está na vanguarda da revolução da IA. Em 2026, nosso foco principa
 ## Informações de Contato
 - **Site:** [www.sapienzae.com.br](https://www.sapienzae.com.br)
 - **E-mail:** contato@sapienzae.com.br
-- **Telefone:** +55 (11) 9999-9999
+- **Telefone:** +55 (79) 99154-0753
 - **Localização:** Sede em São Paulo, SP, com atuação global e hubs de desenvolvimento em locais estratégicos como Aracaju, SE.
 
 ## Presença Digital

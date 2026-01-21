@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { Header, Footer, Analytics } from '@/components/layout';
 import { siteConfig } from '@/lib/site-config';
@@ -67,6 +68,12 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/* DominusERP Chatbot Widget */}
+        <Script
+          src="https://dominus.zensuite.com.br/api/embed/chat/21feb0b9-fc95-48c5-9082-f832d5dc9e3f/widget.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
