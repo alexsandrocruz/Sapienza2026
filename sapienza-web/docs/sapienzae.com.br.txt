@@ -1,0 +1,77 @@
+;;
+;; Domain:     sapienzae.com.br.
+;; Exported:   2026-01-21 21:22:32
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+sapienzae.com.br	3600	IN	SOA	keira.ns.cloudflare.com. dns.cloudflare.com. 2052069715 10000 2400 604800 3600
+
+;; NS Records
+sapienzae.com.br.	86400	IN	NS	keira.ns.cloudflare.com.
+sapienzae.com.br.	86400	IN	NS	scott.ns.cloudflare.com.
+
+;; A Records
+app.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+autoconfig.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+autodiscover.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+blog.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+cpcalendars.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+cpcontacts.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+localhost.sapienzae.com.br.	1	IN	A	127.0.0.1 ; cf_tags=cf-proxied:false
+mail.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+sapienzae.com.br.	1	IN	A	76.76.21.21 ; cf_tags=cf-proxied:false
+webdisk.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+whm.sapienzae.com.br.	1	IN	A	162.241.203.186 ; cf_tags=cf-proxied:true
+www.sapienzae.com.br.	1	IN	A	76.76.21.21 ; cf_tags=cf-proxied:false
+
+;; CNAME Records
+cpanel.sapienzae.com.br.	1	IN	CNAME	sapienzae.com.br. ; cf_tags=cf-proxied:true
+ftp.sapienzae.com.br.	1	IN	CNAME	sapienzae.com.br. ; cf_tags=cf-proxied:true
+s1._domainkey.sapienzae.com.br.	1	IN	CNAME	s1.domainkey.u31730974.wl225.sendgrid.net. ; cf_tags=cf-proxied:true
+s2._domainkey.sapienzae.com.br.	1	IN	CNAME	s2.domainkey.u31730974.wl225.sendgrid.net. ; cf_tags=cf-proxied:true
+webmail.sapienzae.com.br.	1	IN	CNAME	sapienzae.com.br. ; cf_tags=cf-proxied:true
+
+;; MX Records
+sapienzae.com.br.	1	IN	MX	0 mail.sapienzae.com.br.
+
+;; NS Records
+sapienzae.com.br.	1	IN	NS	ns2.clientesapienza.com.br.
+sapienzae.com.br.	1	IN	NS	ns1.clientesapienza.com.br.
+
+;; SRV Records
+_autodiscover._tcp.sapienzae.com.br.	1	IN	SRV	0 0 443 cpanelemaildiscovery.cpanel.net.
+_caldavs._tcp.sapienzae.com.br.	1	IN	SRV	0 0 2080 srv264.prodns.com.br.
+_caldav._tcp.sapienzae.com.br.	1	IN	SRV	0 0 2079 srv264.prodns.com.br.
+_carddavs._tcp.sapienzae.com.br.	1	IN	SRV	0 0 2080 srv264.prodns.com.br.
+_carddav._tcp.sapienzae.com.br.	1	IN	SRV	0 0 2079 srv264.prodns.com.br.
+
+;; TXT Records
+_acme-challenge.sapienzae.com.br.	1	IN	TXT	"RJpVdgTvyp8wo9RrDpCe6V2Opbv-M1lXKT9eOUzzJDY"
+_caldavs._tcp.sapienzae.com.br.	1	IN	TXT	"path=/"
+_caldav._tcp.sapienzae.com.br.	1	IN	TXT	"path=/"
+_carddavs._tcp.sapienzae.com.br.	1	IN	TXT	"path=/"
+_carddav._tcp.sapienzae.com.br.	1	IN	TXT	"path=/"
+_cpanel-dcv-test-record.sapienzae.com.br.	1	IN	TXT	"_cpanel-dcv-test-record=266OHe9zQF2GBsZGBZU34rQEF8A6d2GoErQUJaCN7vVaAnG1RrItiPXakQMMT8KS"
+default._domainkey.sapienzae.com.br.	1	IN	TXT	"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6KKc1ZxZx9Ol9nZjOftZCGgQz+f/KMCt3li4B4VuY/V1ZXkj48yMxLF84fqjf2+KYZPoaaQW0BcQqyhtIOctwt5VQ8/+AbD0pNuCJNoLgfizJe7I4ZpcV6ksnlF1S2B/hNnUhIBmttE0wlMLKSGXHz0rWhWT0N8cF/zgIs7Puy/aW9K6NE0gHSEFBc0cu9gUI" "P5X0x4U+R6eVL/wye3xMPMfaChl01lNwiXEGSeiVEJzuX2ZDkfuR9WNbNgy9hC4+k7oWaTxKwKWhG3rq3QJVjhxJ9SVPyzRIPWfR9ISN2dLXr4as0RCQOOvu9yyfQZ+a5vjihZAIHkmY4bPPC51xQIDAQAB;"
+google-site-verification.sapienzae.com.br.	1	IN	TXT	"4vB9VMdbeuO01tX7Et2urhIRwdgR080uwrqQLEvPIf0"
+sapienzae.com.br.	1	IN	TXT	"v=spf1 a mx include:websitewelcome.com ~all"
